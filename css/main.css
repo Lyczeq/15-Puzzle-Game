@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: #edb336;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 40%;
+  background-color: red;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #541F82;
+  margin-top: 30px;
+}
+
+h1 {
+  font-family: 'Akaya Telivigala', cursive;
+  color: white;
+  font-size: 45px;
+  text-align: center;
+}
+
+section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100px;
+  padding: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+section .game-results {
+  background-color: green;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 60px;
+  width: 100px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  color: white;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+section .game-results .flex-child {
+  -ms-flex-preferred-size: 50px;
+      flex-basis: 50px;
+  text-align: center;
+}
+/*# sourceMappingURL=main.css.map */
