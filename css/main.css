@@ -7,15 +7,16 @@
 
 body {
   background-color: #edb336;
-  font-family: 'Akaya Telivigala', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
-header {
-  margin-top: 25px;
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
 }
 
 h1 {
-  font-family: 'Akaya Telivigala', cursive;
+  margin: 25px 0;
   color: white;
   font-size: 35px;
   text-align: center;
@@ -26,54 +27,63 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100px;
-  padding: 20px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  height: 50px;
 }
 
 section .game-results {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: space-between;
-      -ms-flex-align: space-between;
-          align-items: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 100%;
-  width: 40%;
+  width: 50%;
   background-color: #731cc0;
   border-radius: 10px;
   color: white;
 }
 
 section .game-results .flex-child {
-  text-align: center;
+  text-align: right;
   width: 50%;
+  font-size: 12px;
+}
+
+section .game-results .move-text, section .game-results .time-text {
+  padding: 6px 6px 0 0;
+  text-transform: uppercase;
+  font-weight: 550;
+}
+
+section .game-results .move-result, section .game-results .time-result {
+  padding: 3px 8px 6px 0;
+}
+
+section .game-results .seconds {
+  color: #edb336;
+  font-weight: normal;
 }
 
 section button {
-  padding: 0 10px;
-  border-radius: 10px;
+  width: 30%;
+  padding: 5px 10px;
   height: 100%;
   border: none;
-  width: 40%;
-  font-size: 22px;
-  font-family: 'Akaya Telivigala', cursive;
-  background-color: #731cc0;
-  color: white;
-  cursor: pointer;
+  border-radius: 10px;
   -webkit-transition: color .3s, background-color .3s;
   transition: color .3s, background-color .3s;
-  word-wrap: wrap;
+  background-color: #731cc0;
+  font-size: 13px;
+  font-family: 'Akaya Telivigala', cursive;
+  font-weight: bold;
+  color: #ddd;
+  cursor: pointer;
 }
 
 section button:hover {
@@ -81,9 +91,31 @@ section button:hover {
   background-color: white;
 }
 
+@media (min-width: 375px) {
+  h1 {
+    font-size: 40px;
+  }
+  section .game-results .flex-child {
+    font-size: 14px;
+  }
+  section button {
+    font-size: 15px;
+  }
+}
+
 @media (min-width: 414px) {
   h1 {
     font-size: 45px;
+  }
+}
+
+@media (min-width: 520px) {
+  section {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  section .game-results {
+    width: 40%;
   }
 }
 /*# sourceMappingURL=main.css.map */

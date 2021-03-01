@@ -1,9 +1,34 @@
 .wrapper {
   width: 80%;
-  margin: 0 auto;
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 55px;
+}
+
+section {
+  height: 60px;
+}
+
+section button {
+  font-size: 22px;
+}
+
+section .game-results .flex-child {
+  padding-right: 12px;
+  font-size: 18px;
+}
+
+@media (min-width: 825px) {
+  section {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  section button {
+    width: 25%;
+  }
+  section .game-results {
+    width: 35%;
+  }
 }
 /*# sourceMappingURL=medium.css.map */

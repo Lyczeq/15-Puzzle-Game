@@ -1,9 +1,18 @@
 @media (min-width: 1024px) {
   .wrapper {
-    width: 50%;
+    width: 60%;
   }
-  h1 {
-    font-size: 55px;
+  section button {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1336px) {
+  section button {
+    width: 20%;
+  }
+  section .game-results {
+    width: 30%;
   }
 }
 /*# sourceMappingURL=large.css.map */
