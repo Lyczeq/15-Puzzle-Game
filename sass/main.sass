@@ -5,22 +5,18 @@
 
 body
     background-color: rgb(237, 179, 54)
-
-.wrapper
-    height: 100vh
-    width: 40%
-    background-color: red
-    margin: 0 auto
+    font-family: 'Akaya Telivigala', cursive
 
 header
-    background-color: #541F82
-    margin-top: 30px
+    margin-top: 25px
 
 h1
     font-family: 'Akaya Telivigala', cursive
     color: white
-    font-size: 45px
+    font-size: 35px
     text-align: center
+    text-shadow: 2px 2px 10px rgb(84, 31, 130)
+
 
 section
     display: flex
@@ -28,20 +24,41 @@ section
     padding: 20px
     justify-content: space-between
     align-items: center
-    background-color: white
 
     .game-results
-        background-color: green
         display: flex
-        height: 60px
-        width: 100px
-        justify-content: space-around
+        justify-content: space-between
+        align-items: space-between
         flex-wrap: wrap
+        height: 100%
+        width: 40%
+        background-color: rgb(115, 28, 192)
+        border-radius: 10px
         color: white
-        align-content: space-around
 
         .flex-child
-            flex-basis: 50px
             text-align: center
-            padding: 
+            width: 50%
+        
+    button
+        padding: 0 10px
+        border-radius: 10px
+        height: 100%
+        border: none
+        width: 40%
+        font-size: 22px
+        font-family: 'Akaya Telivigala', cursive
+        background-color: rgb(115, 28, 192)
+        color: white
+        cursor: pointer
+        transition: color .3s, background-color .3s
+        word-wrap: wrap
 
+    button:hover
+        color: rgb(115, 28, 192)
+        background-color: white
+
+@media ( min-width: 414px)
+    h1
+        font-size: 45px
+    
