@@ -91,6 +91,33 @@ section button:hover {
   background-color: white;
 }
 
+.game-container {
+  margin: 30px auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  height: 90vw;
+  width: 90vw;
+  gap: 2%;
+}
+
+.game-puzzle {
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.game-puzzle .puzzle-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 @media (min-width: 375px) {
   h1 {
     font-size: 40px;
@@ -110,11 +137,7 @@ section button:hover {
 }
 
 @media (min-width: 520px) {
-  section {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  section .game-results {
+  .game-results {
     width: 40%;
   }
 }

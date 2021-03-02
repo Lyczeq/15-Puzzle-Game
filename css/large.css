@@ -8,11 +8,21 @@
 }
 
 @media (min-width: 1336px) {
+  .wrapper {
+    width: 45%;
+  }
+  section button {
+    font-size: 18px;
+  }
   section button {
     width: 20%;
   }
   section .game-results {
     width: 30%;
+  }
+  .game-container {
+    height: 40vh;
+    width: 40vh;
   }
 }
 /*# sourceMappingURL=large.css.map */
