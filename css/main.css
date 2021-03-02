@@ -11,8 +11,14 @@ body {
 }
 
 .wrapper {
-  width: 90%;
   margin: 0 auto;
+  width: 300px;
+}
+
+@media (min-width: 411px) {
+  .wrapper {
+    width: 350px;
+  }
 }
 
 h1 {
@@ -99,9 +105,16 @@ section button:hover {
       grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: (1fr)[4];
       grid-template-rows: repeat(4, 1fr);
-  height: 90vw;
-  width: 90vw;
   gap: 2%;
+  width: 300px;
+  height: 300px;
+}
+
+@media (min-width: 411px) {
+  .game-container {
+    width: 350px;
+    height: 350px;
+  }
 }
 
 .game-puzzle {
@@ -119,20 +132,11 @@ section button:hover {
 }
 
 @media (min-width: 375px) {
-  h1 {
-    font-size: 40px;
-  }
   section .game-results .flex-child {
     font-size: 14px;
   }
   section button {
     font-size: 15px;
-  }
-}
-
-@media (min-width: 414px) {
-  h1 {
-    font-size: 45px;
   }
 }
 

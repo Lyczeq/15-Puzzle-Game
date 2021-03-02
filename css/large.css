@@ -1,6 +1,6 @@
 @media (min-width: 1024px) {
   .wrapper {
-    width: 60%;
+    width: 50vh;
   }
   section button {
     font-size: 20px;

@@ -1,5 +1,5 @@
 .wrapper {
-  width: 80%;
+  width: 50vh;
 }
 
 h1 {
@@ -20,14 +20,10 @@ section .game-results .flex-child {
 }
 
 @media (min-width: 825px) {
-  section {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  section button {
+  button {
     width: 25%;
   }
-  section .game-results {
+  .game-results {
     width: 35%;
   }
 }
