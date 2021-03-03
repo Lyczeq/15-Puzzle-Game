@@ -15,12 +15,6 @@ body {
   width: 300px;
 }
 
-@media (min-width: 411px) {
-  .wrapper {
-    width: 350px;
-  }
-}
-
 h1 {
   margin: 25px 0;
   color: white;
@@ -110,17 +104,12 @@ section button:hover {
   height: 300px;
 }
 
-@media (min-width: 411px) {
-  .game-container {
-    width: 350px;
-    height: 350px;
-  }
-}
-
 .game-puzzle {
   position: relative;
   background-color: white;
   border-radius: 15px;
+  -webkit-box-shadow: 2px 2px 5px #731cc0;
+          box-shadow: 2px 2px 5px #731cc0;
 }
 
 .game-puzzle .puzzle-number {
@@ -131,12 +120,40 @@ section button:hover {
           transform: translate(-50%, -50%);
 }
 
+.btn-pause {
+  display: block;
+  margin: 0 auto;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #731cc0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.how-to-play {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
 @media (min-width: 375px) {
   section .game-results .flex-child {
     font-size: 14px;
   }
   section button {
     font-size: 15px;
+  }
+}
+
+@media (min-width: 411px) {
+  .wrapper {
+    width: 350px;
+  }
+  .game-container {
+    width: 350px;
+    height: 350px;
   }
 }
 

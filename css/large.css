@@ -1,28 +1,15 @@
-@media (min-width: 1024px) {
-  .wrapper {
-    width: 50vh;
-  }
-  section button {
-    font-size: 20px;
-  }
+h1 {
+  margin: 35px 0 50px 0;
+  font-size: 45px;
 }
 
-@media (min-width: 1336px) {
-  .wrapper {
-    width: 45%;
-  }
-  section button {
-    font-size: 18px;
-  }
-  section button {
-    width: 20%;
-  }
-  section .game-results {
-    width: 30%;
-  }
-  .game-container {
-    height: 40vh;
-    width: 40vh;
-  }
+.wrapper {
+  width: 450px;
+}
+
+.game-container {
+  height: 450px;
+  width: 450px;
+  margin: 50px auto;
 }
 /*# sourceMappingURL=large.css.map */
