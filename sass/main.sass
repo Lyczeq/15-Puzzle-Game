@@ -57,35 +57,36 @@ section
     .btn-restart
         width: 30%
         padding: 5px 10px
-        height: 100%
-        border: none
-        border-radius: 10px
-        transition: color .3s, background-color .3s
-        background-color: rgb(115, 28, 192)
+        height: 100%     
         font-size: 13px
-        font-family: 'Akaya Telivigala', cursive
         font-weight: bold
-        color: #ddd
+        text-transform: uppercase
 
-    .btn-restart:hover
+.game-btn
+    border: none
+    border-radius: 10px
+    transition: color .3s, background-color .3s
+    background-color: rgb(115, 28, 192)
+    color: white
+    &:hover
         color: rgb(115, 28, 192)
         background-color: white
 
 //GAME GRID CONTAINER
 .game-container
-    margin: 30px auto
     display: grid
     grid-template-columns: repeat(4, 1fr)
     grid-template-rows: repeat(4, 1fr)
     gap: 2%
     width: 300px
     height: 300px
+    margin: 30px auto
 
 .game-puzzle
     position: relative
-    background-color: white
     border-radius: 15px
     box-shadow: 2px 2px 5px rgb(115, 28, 192)
+    background-color: white
 
     .puzzle-number
         position: absolute
@@ -98,10 +99,6 @@ section
     display: block
     margin: 0 auto
     padding: 15px 30px
-    border: none
-    border-radius: 10px
-    background-color: rgb(115, 28, 192)
-    color: white
     font-size: 20px
 
 .how-to-play
@@ -117,25 +114,59 @@ section
 
 //CONTACT
 .contact
+    position: relative
     display: flex
     justify-content: space-around
     align-items: center
     margin: auto
     width: 40%
-    font-size: 20px
-    color: rgb(115, 28, 192)
-    
+    font-size: 20px    
 
-.fa-envelope
-    font-size: 20px
-    line-height: 100%
+.my-mail, i
+    color: rgb(115, 28, 192)
+    font-size: 16px
 
 .btn-mail
     background: none
     border: none
-    color: rgb(115, 28, 192)
 
+.contact-item
+    transition: transform .3s, color .3s
+    &:hover
+        transform: scale(1.2)
 
+.mail-info
+    display: none
+    position: absolute
+    top: -50px
+    width: 190px
+    border-radius: 10px
+    padding: 10px 
+    background-color: #7b787ce8
+    font-size: 10px
+    color: white
+    &.active
+        display: block
+        animation: showMailInfo 4s ease 1
+        
+
+@keyframes showMailInfo
+    1%
+        opacity: 0
+        transform: scale(0)
+        
+    30%
+        opacity: 1
+        transform: scale(1)
+
+    70%
+        opacity: 1
+        transform: scale(1)
+
+    100%
+        opacity: 0
+        transform: scale(0)
+        
 @media ( min-width: 375px)
     section
         .game-results
