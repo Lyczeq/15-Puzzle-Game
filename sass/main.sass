@@ -18,6 +18,9 @@ h1
     text-align: center
     text-shadow: 2px 2px 10px rgb(84, 31, 130)
 
+button
+    cursor: pointer
+
 //GAME RESULTS SECTION
 section
     display: flex
@@ -51,7 +54,7 @@ section
             color: rgb(237, 179, 54)
             font-weight: normal
 
-    button
+    .btn-restart
         width: 30%
         padding: 5px 10px
         height: 100%
@@ -63,9 +66,8 @@ section
         font-family: 'Akaya Telivigala', cursive
         font-weight: bold
         color: #ddd
-        cursor: pointer
 
-    button:hover
+    .btn-restart:hover
         color: rgb(115, 28, 192)
         background-color: white
 
@@ -101,12 +103,38 @@ section
     background-color: rgb(115, 28, 192)
     color: white
     font-size: 20px
-    cursor: pointer
 
 .how-to-play
     width: 90%
-    margin: 20px auto
+    margin: 20px auto 0 auto
     text-align: center
+    font-weight: 450
+    color: #656266
+
+    .order
+        font-size: 18px
+        color: white
+
+//CONTACT
+.contact
+    display: flex
+    justify-content: space-around
+    align-items: center
+    margin: auto
+    width: 40%
+    font-size: 20px
+    color: rgb(115, 28, 192)
+    
+
+.fa-envelope
+    font-size: 20px
+    line-height: 100%
+
+.btn-mail
+    background: none
+    border: none
+    color: rgb(115, 28, 192)
+
 
 @media ( min-width: 375px)
     section
