@@ -1,12 +1,30 @@
-const $btnMail = document.querySelector('.btn-mail');
+let $btnMail;
+let $puzzles;
+let $timeCounter = 0;
+let $movesCounter = 0;
+let $restartBtn;
+let $moves;
+let $time;
+let $pausePlayBtn;
+const main = () => {
+    prepareDOMElements();
+    prepareDOMEvents();
+};
 
-$btnMail.addEventListener('click', function (event) {
+const prepareDOMElements = () => {
+    $btnMail = document.querySelector('.btn-mail');
+    $puzzles = document.getElementsByClassName('game-puzzle');
+    $restartBtn = document.querySelector('.btn-restart')
+    $moves = document.querySelector('.move-result');
+    $time = document.querySelector('.time-result');
+    $pausePlayBtn = document.querySelector('.btn-pause-play')
+};
 
-    showMailInfo();
-    copyMail();
-});
+const prepareDOMEvents = () => {
+    $btnMail.addEventListener('click', copyMail);
+};
 
-const showMailInfo = ()=>{
+const showMailInfo = () => {
     const mailInfo = document.querySelector('.mail-info');
     mailInfo.classList.add('active');
 
@@ -15,12 +33,16 @@ const showMailInfo = ()=>{
     }, 4000);
 };
 
-const copyMail =() =>{
+const copyMail = () => {
+    showMailInfo();
+
     const myMail = document.querySelector('.my-mail');
-    let range = document.createRange();
+    const range = document.createRange();
+
     range.selectNode(myMail);
     window.getSelection().addRange(range);
     document.execCommand('copy');
-
-    window.getSelection().removeAllRanges(); 
+    window.getSelection().removeAllRanges();
 };
+
+document.addEventListener('DOMContentLoaded', main);
