@@ -126,6 +126,10 @@ section .btn-restart {
           transform: translate(-50%, -50%);
 }
 
+.zero-puzzle {
+  background-color: #6F6B68;
+}
+
 .btn-pause-play {
   display: block;
   margin: 0 auto;
@@ -187,7 +191,7 @@ section .btn-restart {
   display: none;
   position: absolute;
   top: -50px;
-  width: 190px;
+  width: 90vw;
   border-radius: 10px;
   padding: 10px;
   background-color: #7b787ce8;
@@ -264,11 +268,17 @@ section .btn-restart {
     width: 350px;
     height: 350px;
   }
+  .mail-info {
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 520px) {
   .game-results {
     width: 40%;
+  }
+  .mail-info {
+    width: 300px;
   }
 }
 /*# sourceMappingURL=main.css.map */
