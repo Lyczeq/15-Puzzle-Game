@@ -6,7 +6,7 @@ let $restartBtn;
 let $moves;
 let $time;
 let $pausePlayBtn;
-let zeroDiv = 0;
+let $divZero;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -22,7 +22,11 @@ const prepareDOMElements = () => {
 }
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
-    $restartBtn.addEventListener('click', fillPuzzles)
+    $restartBtn.addEventListener('click', function () {
+        addChildToReset();
+        $divZero.classList.remove('zero-puzzle');
+        fillPuzzles();
+    });
 };
 
 const showMailInfo = () => {
@@ -48,13 +52,6 @@ const copyMail = () => {
 
 document.addEventListener('DOMContentLoaded', main);
 
-function getRandomNumber(min, max) {
-    let step1 = max - min + 1;
-    let step2 = Math.random() + step1;
-    let result = Math.floor(step2) + min;
-    return result;
-}
-
 function fillPuzzles() {
     $puzzles = document.getElementsByClassName('game-puzzle');
 
@@ -66,16 +63,77 @@ function fillPuzzles() {
 
     let index = 0;
     for (let puzzle of $puzzles) {
-        puzzle.children[0].innerHTML = randomArray[index];
-        let puzzleNumber = puzzle.children[0];
-
-        if (puzzleNumber.innerHTML === "0") {
-            let zeroPuzzle = puzzle;
-            zeroPuzzle.classList.add('zero-puzzle');
-            puzzleNumber.textContent = ""
+        if (randomArray[index] === 0) {
+            let deletedChild = puzzle.querySelector('div')
+            $divZero = puzzle;
+            $divZero.removeChild(deletedChild)
+            $divZero.classList.add('zero-puzzle')
+        } else {
+            puzzle.querySelector('p').innerHTML = randomArray[index];
         }
         index++;
     }
-
 }
+
+function addChildToReset() {
+    const puzzleBox = document.createElement('div');
+    puzzleBox.classList.add('puzzle-box');
+    const puzzleNumber = document.createElement('p');
+    puzzleNumber.classList.add('puzzle-number');
+    puzzleNumber.innerHTML = "1"
+    puzzleBox.appendChild(puzzleNumber);
+    $divZero.appendChild(puzzleBox);
+}
+//second version
+// function fillPuzzles() { 
+//     $puzzles = document.getElementsByClassName('game-puzzle');
+
+//     const nums = new Set
+//     while (nums.size !== 16) {
+//         nums.add(Math.floor(Math.random() * 16));
+//     }
+//     const randomArray = [...nums];
+
+//     let index = 0;
+//     for (let puzzle of $puzzles) {
+//         let puzzleNumber = randomArray[index];
+//         if (randomArray[index] !== 0) {
+//             const puzzleBox = document.createElement('div');
+//             puzzleBox.classList.add('puzzle-box');
+//             const puzzleNumber = document.createElement('p');
+//             puzzleNumber.classList.add('puzzle-number');
+//             puzzleNumber.innerHTML=randomArray[index]
+//             puzzleBox.appendChild(puzzleNumber);
+//             puzzle.appendChild(puzzleBox);
+//         }else{
+//             $divZero = puzzle;
+//             $divZero.classList.add('zero-puzzle')
+//         }
+
+
+//         index++;
+//     }
+
+// }
+
 fillPuzzles();
+
+function isFinished() {
+    $puzzles = document.getElementsByClassName('game-puzzle');
+    let counter = 0;
+    for (let i = 0; i < 15; i++) {
+        if ($puzzles[i].querySelector('p').innerText == i + 1) {
+            counter++;
+        }
+    }
+
+    if (counter === 15) {
+        console.log("You win");
+    }
+}
+$puzzlesBoxes = document.getElementsByClassName('puzzle-box');
+
+function addListeners() {
+    $puzzlesBoxes = document.getElementsByClassName('puzzle-box');
+    for (let puzzle of $puzzles) {}
+}
