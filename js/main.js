@@ -1,5 +1,6 @@
 let $btnMail;
-let $puzzles;
+// let $puzzles;
+let $puzzles = document.getElementsByClassName('game-puzzle');
 let $timeCounter = 0;
 let $movesCounter = 0;
 let $restartBtn;
@@ -7,6 +8,7 @@ let $moves;
 let $time;
 let $pausePlayBtn;
 let $divZero;
+let pp;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -14,7 +16,7 @@ const main = () => {
 
 const prepareDOMElements = () => {
     $btnMail = document.querySelector('.btn-mail');
-    $puzzles = document.getElementsByClassName('game-puzzle');
+    // $puzzles = document.getElementsByClassName('game-puzzle');
     $restartBtn = document.querySelector('.btn-restart')
     $moves = document.querySelector('.move-result');
     $time = document.querySelector('.time-result');
@@ -27,6 +29,29 @@ const prepareDOMEvents = () => {
         $divZero.classList.remove('zero-puzzle');
         fillPuzzles();
     });
+
+    for (puzzle of $puzzles) {
+        puzzle.addEventListener('click', function () {
+            let currentIndex = pp.indexOf(this);
+            let zeroIndex = pp.indexOf($divZero);
+
+            if (currentIndex !== zeroIndex) {
+                const wrongIndexesPlusOne = [3, 7, 11]
+                const wrongIndexesMinusOne = [4, 8, 12]
+
+                if (((currentIndex - 1 === zeroIndex) && !wrongIndexesMinusOne.includes(currentIndex)) || // z poprzednim
+                    ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
+                    ((currentIndex + 4 === zeroIndex)) ||
+                    ((currentIndex - 4 === zeroIndex))) {
+                    $divZero.appendChild(this.firstChild)
+                    $divZero = this;
+
+                }
+            }
+
+        })
+    }
+
 };
 
 const showMailInfo = () => {
@@ -50,10 +75,9 @@ const copyMail = () => {
     window.getSelection().removeAllRanges();
 };
 
-document.addEventListener('DOMContentLoaded', main);
 
 function fillPuzzles() {
-    $puzzles = document.getElementsByClassName('game-puzzle');
+    puzzles = document.getElementsByClassName('game-puzzle');
 
     const nums = new Set
     while (nums.size !== 16) {
@@ -62,7 +86,7 @@ function fillPuzzles() {
     const randomArray = [...nums];
 
     let index = 0;
-    for (let puzzle of $puzzles) {
+    for (let puzzle of puzzles) {
         if (randomArray[index] === 0) {
             let deletedChild = puzzle.querySelector('div')
             $divZero = puzzle;
@@ -119,7 +143,6 @@ function addChildToReset() {
 fillPuzzles();
 
 function isFinished() {
-    $puzzles = document.getElementsByClassName('game-puzzle');
     let counter = 0;
     for (let i = 0; i < 15; i++) {
         if ($puzzles[i].querySelector('p').innerText == i + 1) {
@@ -137,3 +160,4 @@ function addListeners() {
     $puzzlesBoxes = document.getElementsByClassName('puzzle-box');
     for (let puzzle of $puzzles) {}
 }
+document.addEventListener('DOMContentLoaded', main);

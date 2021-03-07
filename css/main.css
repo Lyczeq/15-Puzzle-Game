@@ -121,6 +121,7 @@ section .btn-restart {
   height: 100%;
   border-radius: 15px;
   background-color: red;
+  cursor: pointer;
 }
 
 .puzzle-number {
