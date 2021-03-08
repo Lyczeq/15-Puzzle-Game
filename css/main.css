@@ -7,7 +7,7 @@
 
 body {
   background-color: #edb336;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 .wrapper {
@@ -20,11 +20,12 @@ h1 {
   color: white;
   font-size: 35px;
   text-align: center;
-  text-shadow: 2px 2px 10px #541f82;
+  text-shadow: 0 0 15px #541f82;
 }
 
 button {
   cursor: pointer;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 section {
@@ -67,14 +68,19 @@ section .game-results .move-text, section .game-results .time-text {
 
 section .game-results .move-result, section .game-results .time-result {
   padding: 3px 8px 6px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+section .game-results .time-result {
+  color: #edb336;
 }
 
 section .game-results .seconds {
-  color: #edb336;
+  color: white;
   font-weight: normal;
 }
 
-section .btn-restart {
+.btn-restart {
   width: 30%;
   padding: 5px 10px;
   height: 100%;
@@ -97,7 +103,96 @@ section .btn-restart {
   background-color: white;
 }
 
+.congratulations-bar {
+  position: absolute;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 101%;
+  width: 101%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: #d1c1a6;
+  z-index: 2;
+  opacity: .95;
+}
+
+.congratulations-bar.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: congratulations .5s ease 1;
+          animation: congratulations .5s ease 1;
+}
+
+.congratulations-bar.disactive {
+  display: none;
+  animation: congratulations .5s ease 1 reverse;
+}
+
+.congratulations-bar .congratulations {
+  color: #541f82;
+  text-shadow: 0 0 20px #edb336;
+  text-transform: uppercase;
+  font-size: 23px;
+}
+
+.congratulations-bar .final-score {
+  width: 60%;
+  text-align: center;
+  font-weight: bold;
+  color: #541f82;
+}
+
+.congratulations-bar .final-score .final-moves, .congratulations-bar .final-score .final-time {
+  color: #edb336;
+  text-shadow: 0px 0px 3px black;
+}
+
+.congratulations-bar .btn-play-again {
+  padding: 15px 30px;
+  font-size: 17px;
+}
+
+@-webkit-keyframes congratulations {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    opacity: .95;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes congratulations {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    opacity: .95;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 .game-container {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
@@ -141,9 +236,10 @@ section .btn-restart {
   margin: 0 auto;
   padding: 15px 30px;
   font-size: 20px;
+  font-family: 'Luckiest Guy', cursive;
 }
 
-.btn-pause-play.disactive {
+.btn-restart.disactive, .btn-pause-play.disactive, .game-results.disactive {
   cursor: not-allowed;
   opacity: 0.5;
   background-color: #333;
@@ -283,6 +379,9 @@ section .btn-restart {
   }
   .mail-info {
     font-size: 14px;
+  }
+  .congratulations-bar .btn-play-again {
+    font-size: 22px;
   }
 }
 

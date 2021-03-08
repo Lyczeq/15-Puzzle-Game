@@ -16,4 +16,16 @@ h1 {
 .mail-info {
   width: 290px;
 }
+
+.congratulations-bar .congratulations {
+  font-size: 33px;
+}
+
+.congratulations-bar .final-score {
+  font-size: 22px;
+}
+
+.congratulations-bar .btn-play-again {
+  font-size: 25px;
+}
 /*# sourceMappingURL=large.css.map */

@@ -3,10 +3,13 @@ let $timeCounter = 0;
 let $movesCounter = 0;
 let $restartBtn;
 let $movesResult;
-let $time;
+let $timeResult;
 let $pausePlayBtn;
 let $divZero;
 let $puzzles;
+let $playAgainBtn;
+let $gameResults;
+let $congratulationsBar;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -17,48 +20,54 @@ const prepareDOMElements = () => {
     $puzzles = [...document.getElementsByClassName('game-puzzle')];
     $restartBtn = document.querySelector('.btn-restart')
     $movesResult = document.querySelector('.move-result');
-    $time = document.querySelector('.time-result');
+    $timeResult = document.querySelector('.seconds');
     $pausePlayBtn = document.querySelector('.btn-pause-play');
+    $playAgainBtn = document.querySelector('.btn-play-again');
+    $gameResults = document.querySelector('.game-results');
+    $congratulationsBar = document.querySelector('.congratulations-bar');
     fillPuzzles();
+    userWins();
 
 }
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
-    $restartBtn.addEventListener('click', function () {
-        addChildToReset();
-        $divZero.classList.remove('zero-puzzle');
-        fillPuzzles();
-        $movesCounter = 0;
-        $movesResult.innerHTML = $movesCounter;
-        $pausePlayBtn.classList.add('disactive')
-        $pausePlayBtn.setAttribute('disabled', 'disabled')
-    });
+    $restartBtn.addEventListener('click', restartAll);
 
     movePuzzle();
-    // startClock();
     $pausePlayBtn.addEventListener('click', function () {
         console.log("j");
     })
+    $playAgainBtn.addEventListener('click', playAgain);
 
 };
 
-// const startClock = () => {
-//     for (puzzle of $puzzles) {
-//         puzzle.addEventListener('click', startTimer())
-// }
-// }
-// function startTimer() {
-//     console.log("hi");
-//     puzzle.removeEventListener('click', startTimer())
-// }
+const restartAll = () => {
+    addChildToReset();
+    $divZero.classList.remove('zero-puzzle');
 
-// const pauseBtnActive = () => {
-//     if (this.innerText != 0) {
-//         $pausePlayBtn.classList.remove('disactive')
-//     }
+    fillPuzzles();
+    $movesCounter = 0;
+    $movesResult.innerHTML = $movesCounter;
+    $timeCounter = 0;
+    $timeResult.innerHTML = $timeCounter;
+    $pausePlayBtn.classList.add('disactive');
+    $pausePlayBtn.setAttribute('disabled', 'disabled');
+}
 
-// }
+const playAgain =() =>{
+    addChildToReset();
+    $divZero.classList.remove('zero-puzzle');
 
+    fillPuzzles();
+    $restartBtn.classList.remove('disactive')
+    $gameResults.classList.remove('disactive')
+    $congratulationsBar.classList.add('disactive');
+    window.setTimeout(function () {
+        $congratulationsBar.style.display ="none"
+        $congratulationsBar.classList.remove('active');
+    }, 3999);
+
+}
 
 const movePuzzle = () => {
     for (puzzle of $puzzles) {
@@ -88,6 +97,7 @@ const movePuzzle = () => {
         })
     }
 }
+
 
 const showMailInfo = () => {
     const mailInfo = document.querySelector('.mail-info');
@@ -154,8 +164,29 @@ function isFinished() {
 
     if (counter === 15) {
         console.log("You win"); //add congratulations message and sass option
-        //display none pause btn
-        //restart game = play again
         //divy z gratkami, liczbą ruchów, czasem, a tamte wyzerowac 
     }
+}
+
+const userWins = () => {
+    $restartBtn.classList.add('disactive');
+    $restartBtn.setAttribute('disabled', 'disabled')
+    $pausePlayBtn.classList.add('disactive')
+    if (!$pausePlayBtn.hasAttribute('disabled')) {
+        $pausePlayBtn.setAttribute('disabled ', 'disabled')
+    }
+
+    $gameResults.classList.add('disactive')
+    $congratulationsBar.classList.add('active');
+
+    const finalMoves = $congratulationsBar.querySelector('.final-moves');
+    finalMoves.innerHTML = $movesCounter;
+    const finalTime = $congratulationsBar.querySelector('.final-time');
+    finalTime.innerHTML = $timeCounter;
+
+    $movesCounter = 0;
+    $movesResult.innerHTML = $movesCounter;
+    $timeCounter = 0;
+    $timeResult.innerHTML = $timeCounter;
+
 }

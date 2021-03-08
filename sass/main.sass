@@ -5,23 +5,23 @@
 
 body
     background-color: rgb(237, 179, 54)
-    font-family: 'Montserrat', sans-serif
+    // font-family: 'Montserrat', sans-serif
+    font-family: 'Luckiest Guy', cursive
 
 .wrapper
     margin: 0 auto
     width: 300px
-
-
 
 h1
     margin: 25px 0
     color: white
     font-size: 35px
     text-align: center
-    text-shadow: 2px 2px 10px rgb(84, 31, 130)
+    text-shadow: 0  0 15px rgb(84, 31, 130)
 
 button
     cursor: pointer
+    font-family: 'Luckiest Guy', cursive
 
 //GAME RESULTS SECTION
 section
@@ -48,21 +48,27 @@ section
             padding: 6px 6px 0 0
             text-transform: uppercase
             font-weight: 550
+            
 
         .move-result, .time-result
             padding: 3px 8px 6px 0
-        
-        .seconds
+            font-family: 'Montserrat', sans-serif
+            
+
+        .time-result
             color: rgb(237, 179, 54)
+
+        .seconds
+            color: white
             font-weight: normal
 
-    .btn-restart
-        width: 30%
-        padding: 5px 10px
-        height: 100%     
-        font-size: 13px
-        font-weight: bold
-        text-transform: uppercase
+.btn-restart
+    width: 30%
+    padding: 5px 10px
+    height: 100%     
+    font-size: 13px
+    font-weight: bold
+    text-transform: uppercase
 
 .game-btn
     border: none
@@ -73,9 +79,63 @@ section
     &:hover
         color: rgb(115, 28, 192)
         background-color: white
+ 
 
 //GAME GRID CONTAINER
+.congratulations-bar
+    position: absolute
+    display: none
+    align-items: center
+    flex-direction: column
+    justify-content: space-evenly
+    height: 101%
+    width: 101%
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    border-radius: 10px
+    background-color: #d1c1a6
+    z-index: 2
+    opacity: .95
+    &.active
+        display: flex
+        animation: congratulations .5s ease 1
+
+    &.disactive
+        display: none
+        animation: congratulations .5s ease 1 reverse
+
+    .congratulations
+        color: rgb(84, 31, 130)
+        text-shadow: 0 0 20px rgb(237, 179, 54)
+        text-transform: uppercase
+        font-size: 23px
+
+    .final-score
+        width: 60%
+        text-align: center
+        font-weight: bold
+        color: rgb(84, 31, 130)
+
+        .final-moves, .final-time
+            color: rgb(237, 179, 54)
+            text-shadow: 0px 0px 3px black
+
+    .btn-play-again
+        padding: 15px 30px
+        font-size: 17px
+        
+@keyframes congratulations
+    from
+        opacity: 0
+        transform: translate(-50%,-50%) scale(0)
+    
+    to
+        opacity: .95
+        transform: translate(-50%,-50%) scale(1)
+
 .game-container
+    position: relative
     display: grid
     grid-template-columns: repeat(4, 1fr)
     grid-template-rows: repeat(4, 1fr)
@@ -111,12 +171,14 @@ section
     margin: 0 auto
     padding: 15px 30px
     font-size: 20px
+    font-family: 'Luckiest Guy', cursive
+
+.btn-restart, .btn-pause-play, .game-results
     &.disactive
         cursor: not-allowed
         opacity: 0.5
         background-color: #333
         color: white
-
 
 .how-to-play
     width: 90%
@@ -202,6 +264,10 @@ section
 
     .mail-info
         font-size: 14px
+
+    .congratulations-bar
+        .btn-play-again
+            font-size: 22px
 
 @media ( min-width: 520px)
     .game-results
