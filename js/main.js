@@ -1,14 +1,12 @@
 let $btnMail;
-// let $puzzles;
-let $puzzles = document.getElementsByClassName('game-puzzle');
 let $timeCounter = 0;
 let $movesCounter = 0;
 let $restartBtn;
-let $moves;
+let $movesResult;
 let $time;
 let $pausePlayBtn;
 let $divZero;
-let pp;
+let $puzzles;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -16,11 +14,13 @@ const main = () => {
 
 const prepareDOMElements = () => {
     $btnMail = document.querySelector('.btn-mail');
-    // $puzzles = document.getElementsByClassName('game-puzzle');
+    $puzzles = [...document.getElementsByClassName('game-puzzle')];
     $restartBtn = document.querySelector('.btn-restart')
-    $moves = document.querySelector('.move-result');
+    $movesResult = document.querySelector('.move-result');
     $time = document.querySelector('.time-result');
     $pausePlayBtn = document.querySelector('.btn-pause-play');
+    fillPuzzles();
+
 }
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
@@ -28,12 +28,43 @@ const prepareDOMEvents = () => {
         addChildToReset();
         $divZero.classList.remove('zero-puzzle');
         fillPuzzles();
+        $movesCounter = 0;
+        $movesResult.innerHTML = $movesCounter;
+        $pausePlayBtn.classList.add('disactive')
+        $pausePlayBtn.setAttribute('disabled', 'disabled')
     });
 
+    movePuzzle();
+    // startClock();
+    $pausePlayBtn.addEventListener('click', function () {
+        console.log("j");
+    })
+
+};
+
+// const startClock = () => {
+//     for (puzzle of $puzzles) {
+//         puzzle.addEventListener('click', startTimer())
+// }
+// }
+// function startTimer() {
+//     console.log("hi");
+//     puzzle.removeEventListener('click', startTimer())
+// }
+
+// const pauseBtnActive = () => {
+//     if (this.innerText != 0) {
+//         $pausePlayBtn.classList.remove('disactive')
+//     }
+
+// }
+
+
+const movePuzzle = () => {
     for (puzzle of $puzzles) {
         puzzle.addEventListener('click', function () {
-            let currentIndex = pp.indexOf(this);
-            let zeroIndex = pp.indexOf($divZero);
+            let currentIndex = $puzzles.indexOf(this);
+            let zeroIndex = $puzzles.indexOf($divZero);
 
             if (currentIndex !== zeroIndex) {
                 const wrongIndexesPlusOne = [3, 7, 11]
@@ -45,14 +76,18 @@ const prepareDOMEvents = () => {
                     ((currentIndex - 4 === zeroIndex))) {
                     $divZero.appendChild(this.firstChild)
                     $divZero = this;
-
+                    $movesCounter++;
+                    if ($movesCounter !== 0) {
+                        $pausePlayBtn.classList.remove('disactive')
+                        $pausePlayBtn.removeAttribute('disabled')
+                    }
+                    $movesResult.innerHTML = $movesCounter;
                 }
             }
-
+            isFinished();
         })
     }
-
-};
+}
 
 const showMailInfo = () => {
     const mailInfo = document.querySelector('.mail-info');
@@ -77,8 +112,7 @@ const copyMail = () => {
 
 
 function fillPuzzles() {
-    puzzles = document.getElementsByClassName('game-puzzle');
-
+    const puzzlesBufor = document.getElementsByClassName('game-puzzle')
     const nums = new Set
     while (nums.size !== 16) {
         nums.add(Math.floor(Math.random() * 16));
@@ -86,7 +120,7 @@ function fillPuzzles() {
     const randomArray = [...nums];
 
     let index = 0;
-    for (let puzzle of puzzles) {
+    for (let puzzle of puzzlesBufor) {
         if (randomArray[index] === 0) {
             let deletedChild = puzzle.querySelector('div')
             $divZero = puzzle;
@@ -108,56 +142,20 @@ function addChildToReset() {
     puzzleBox.appendChild(puzzleNumber);
     $divZero.appendChild(puzzleBox);
 }
-//second version
-// function fillPuzzles() { 
-//     $puzzles = document.getElementsByClassName('game-puzzle');
-
-//     const nums = new Set
-//     while (nums.size !== 16) {
-//         nums.add(Math.floor(Math.random() * 16));
-//     }
-//     const randomArray = [...nums];
-
-//     let index = 0;
-//     for (let puzzle of $puzzles) {
-//         let puzzleNumber = randomArray[index];
-//         if (randomArray[index] !== 0) {
-//             const puzzleBox = document.createElement('div');
-//             puzzleBox.classList.add('puzzle-box');
-//             const puzzleNumber = document.createElement('p');
-//             puzzleNumber.classList.add('puzzle-number');
-//             puzzleNumber.innerHTML=randomArray[index]
-//             puzzleBox.appendChild(puzzleNumber);
-//             puzzle.appendChild(puzzleBox);
-//         }else{
-//             $divZero = puzzle;
-//             $divZero.classList.add('zero-puzzle')
-//         }
-
-
-//         index++;
-//     }
-
-// }
-
-fillPuzzles();
+document.addEventListener('DOMContentLoaded', main);
 
 function isFinished() {
     let counter = 0;
     for (let i = 0; i < 15; i++) {
-        if ($puzzles[i].querySelector('p').innerText == i + 1) {
+        if ($puzzles[i].querySelector('p') !== null && $puzzles[i].querySelector('p').innerText == i + 1) {
             counter++;
         }
     }
 
     if (counter === 15) {
-        console.log("You win");
+        console.log("You win"); //add congratulations message and sass option
+        //display none pause btn
+        //restart game = play again
+        //divy z gratkami, liczbą ruchów, czasem, a tamte wyzerowac 
     }
 }
-$puzzlesBoxes = document.getElementsByClassName('puzzle-box');
-
-function addListeners() {
-    $puzzlesBoxes = document.getElementsByClassName('puzzle-box');
-    for (let puzzle of $puzzles) {}
-}
-document.addEventListener('DOMContentLoaded', main);
