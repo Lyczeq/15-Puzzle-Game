@@ -61,13 +61,33 @@ const playAgain = () => {
     fillPuzzles();
     $restartBtn.classList.remove('disactive')
     $gameResults.classList.remove('disactive')
-    $congratulationsBar.classList.add('disactive');
     $restartBtn.removeAttribute('disabled');
-    window.setTimeout(function () {
-        // $congratulationsBar.classList.remove('active');
-        $congratulationsBar.style.display = "none"
-        $congratulationsBar.classList.remove('disactive');
-    }, 450);
+
+    $congratulationsBar.animate([{
+            opacity: ".95",
+            transform: "translate(-50%,-50%) scale(1)"
+        },
+        {
+            opacity: "0",
+            transform: "translate(-50%,-50%) scale(0)"
+        }
+    ], {
+        duration: 5000,
+        iterations: Infinity,
+        easing: "ease"
+    });
+
+
+
+
+    // $congratulationsBar.classList.add('disactive');
+    // window.setTimeout(function () {
+    //     $congratulationsBar.classList.remove('active');
+    //     $congratulationsBar.classList.remove('disactive');
+    //     $congratulationsBar.style.display ='none';
+    // }, 450);
+
+
 }
 
 const movePuzzle = () => {
