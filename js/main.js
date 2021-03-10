@@ -54,7 +54,7 @@ const restartAll = () => {
     $pausePlayBtn.setAttribute('disabled', 'disabled');
 }
 
-const playAgain =() =>{
+const playAgain = () => {
     addChildToReset();
     $divZero.classList.remove('zero-puzzle');
 
@@ -62,11 +62,12 @@ const playAgain =() =>{
     $restartBtn.classList.remove('disactive')
     $gameResults.classList.remove('disactive')
     $congratulationsBar.classList.add('disactive');
+    $restartBtn.removeAttribute('disabled');
     window.setTimeout(function () {
-        $congratulationsBar.style.display ="none"
-        $congratulationsBar.classList.remove('active');
-    }, 3999);
-
+        // $congratulationsBar.classList.remove('active');
+        $congratulationsBar.style.display = "none"
+        $congratulationsBar.classList.remove('disactive');
+    }, 450);
 }
 
 const movePuzzle = () => {
@@ -163,8 +164,7 @@ function isFinished() {
     }
 
     if (counter === 15) {
-        console.log("You win"); //add congratulations message and sass option
-        //divy z gratkami, liczbą ruchów, czasem, a tamte wyzerowac 
+        userWins();
     }
 }
 
@@ -188,5 +188,6 @@ const userWins = () => {
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
+
 
 }
