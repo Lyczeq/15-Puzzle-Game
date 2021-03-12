@@ -10,9 +10,12 @@ let $puzzles;
 let $playAgainBtn;
 let $gameResults;
 let $congratulationsBar;
+
+
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
+
 };
 
 const prepareDOMElements = () => {
@@ -26,8 +29,7 @@ const prepareDOMElements = () => {
     $gameResults = document.querySelector('.game-results');
     $congratulationsBar = document.querySelector('.congratulations-bar');
     fillPuzzles();
-    userWins();
-
+    // userWins();
 }
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
@@ -72,20 +74,14 @@ const playAgain = () => {
             transform: "translate(-50%,-50%) scale(0)"
         }
     ], {
-        duration: 5000,
-        iterations: Infinity,
+        duration: 500,
+        iterations: 1,
         easing: "ease"
     });
 
-
-
-
-    // $congratulationsBar.classList.add('disactive');
-    // window.setTimeout(function () {
-    //     $congratulationsBar.classList.remove('active');
-    //     $congratulationsBar.classList.remove('disactive');
-    //     $congratulationsBar.style.display ='none';
-    // }, 450);
+    window.setTimeout(function () {
+        $congratulationsBar.classList.remove('active');
+    }, 480);
 
 
 }
@@ -95,7 +91,6 @@ const movePuzzle = () => {
         puzzle.addEventListener('click', function () {
             let currentIndex = $puzzles.indexOf(this);
             let zeroIndex = $puzzles.indexOf($divZero);
-
             if (currentIndex !== zeroIndex) {
                 const wrongIndexesPlusOne = [3, 7, 11]
                 const wrongIndexesMinusOne = [4, 8, 12]
@@ -104,6 +99,7 @@ const movePuzzle = () => {
                     ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
                     ((currentIndex + 4 === zeroIndex)) ||
                     ((currentIndex - 4 === zeroIndex))) {
+                        console.log("hi");
                     $divZero.appendChild(this.firstChild)
                     $divZero = this;
                     $movesCounter++;

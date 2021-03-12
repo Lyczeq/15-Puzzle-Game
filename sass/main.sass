@@ -95,15 +95,11 @@ section
     transform: translate(-50%,-50%)
     border-radius: 10px
     background-color: #d1c1a6
-    z-index: 2
+    // z-index: 2
     opacity: .95
     &.active
         display: flex
         animation: congratulations .5s ease 1
-
-    &.disactive
-        display: flex
-        animation: congratulations-out .5s ease 1
 
     .congratulations
         color: rgb(84, 31, 130)
@@ -134,14 +130,6 @@ section
         opacity: .95
         transform: translate(-50%,-50%) scale(1)
 
-@keyframes congratulations-out
-    from
-        opacity: .95
-        transform: translate(-50%,-50%) scale(1)
-    
-    to
-        opacity: 0
-        transform: translate(-50%,-50%) scale(0)
 
 .game-container
     position: relative
