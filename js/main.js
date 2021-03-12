@@ -26,7 +26,8 @@ const prepareDOMElements = () => {
     $gameResults = document.querySelector('.game-results');
     $congratulationsBar = document.querySelector('.congratulations-bar');
     fillPuzzles();
-    userWins();
+    // userWins();
+    isInRightPoisition();
 
 }
 const prepareDOMEvents = () => {
@@ -54,6 +55,25 @@ const restartAll = () => {
     $pausePlayBtn.setAttribute('disabled', 'disabled');
 }
 
+const isInRightPoisition = () => {
+    for (let i = 0; i < $puzzles.length; i++) {
+
+        const bufor = $puzzles[i].querySelector('.puzzle-box');
+
+        if (bufor !== null) {
+            const puzzNumber = bufor.querySelector('.puzzle-number');
+
+            if (puzzNumber.innerHTML === `${i+1}`) {
+                bufor.classList.add('right-position')
+            } else {
+                bufor.classList.remove('right-position');
+            }
+        }
+
+
+
+    }
+}
 const playAgain = () => {
     addChildToReset();
     $divZero.classList.remove('zero-puzzle');
@@ -100,9 +120,13 @@ const movePuzzle = () => {
                     ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
                     ((currentIndex + 4 === zeroIndex)) ||
                     ((currentIndex - 4 === zeroIndex))) {
+
                     $divZero.appendChild(this.firstChild)
+                    $divZero.classList.remove('zero-puzzle');
                     $divZero = this;
                     $movesCounter++;
+                    this.classList.add('zero-puzzle');
+                    isInRightPoisition();
                     if ($movesCounter !== 0) {
                         $pausePlayBtn.classList.remove('disactive')
                         $pausePlayBtn.removeAttribute('disabled')
@@ -139,7 +163,6 @@ const copyMail = () => {
 
 
 function fillPuzzles() {
-    const puzzlesBufor = document.getElementsByClassName('game-puzzle')
     const nums = new Set
     while (nums.size !== 16) {
         nums.add(Math.floor(Math.random() * 16));
@@ -147,7 +170,7 @@ function fillPuzzles() {
     const randomArray = [...nums];
 
     let index = 0;
-    for (let puzzle of puzzlesBufor) {
+    for (let puzzle of $puzzles) {
         if (randomArray[index] === 0) {
             let deletedChild = puzzle.querySelector('div')
             $divZero = puzzle;
@@ -155,6 +178,7 @@ function fillPuzzles() {
             $divZero.classList.add('zero-puzzle')
         } else {
             puzzle.querySelector('p').innerHTML = randomArray[index];
+            console.log(randomArray[index]);
         }
         index++;
     }
