@@ -136,14 +136,6 @@ section .game-results .seconds {
           animation: congratulations .5s ease 1;
 }
 
-.congratulations-bar.disactive {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-animation: congratulations-out .5s ease 1;
-          animation: congratulations-out .5s ease 1;
-}
-
 .congratulations-bar .congratulations {
   color: #541f82;
   text-shadow: 0 0 20px #edb336;
@@ -191,32 +183,6 @@ section .game-results .seconds {
     opacity: .95;
     -webkit-transform: translate(-50%, -50%) scale(1);
             transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@-webkit-keyframes congratulations-out {
-  from {
-    opacity: .95;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1);
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0);
-  }
-}
-
-@keyframes congratulations-out {
-  from {
-    opacity: .95;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1);
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: translate(-50%, -50%) scale(0);
-            transform: translate(-50%, -50%) scale(0);
   }
 }
 

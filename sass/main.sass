@@ -101,10 +101,6 @@ section
         display: flex
         animation: congratulations .5s ease 1
 
-    &.disactive
-        display: flex
-        animation: congratulations-out .5s ease 1
-
     .congratulations
         color: rgb(84, 31, 130)
         text-shadow: 0 0 20px rgb(237, 179, 54)
@@ -133,15 +129,6 @@ section
     to
         opacity: .95
         transform: translate(-50%,-50%) scale(1)
-
-@keyframes congratulations-out
-    from
-        opacity: .95
-        transform: translate(-50%,-50%) scale(1)
-    
-    to
-        opacity: 0
-        transform: translate(-50%,-50%) scale(0)
 
 .game-container
     position: relative
@@ -284,7 +271,3 @@ section
     
     .mail-info
         width: 300px
-
-
-
-    

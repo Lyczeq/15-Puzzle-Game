@@ -72,20 +72,16 @@ const playAgain = () => {
             transform: "translate(-50%,-50%) scale(0)"
         }
     ], {
-        duration: 5000,
-        iterations: Infinity,
+        duration: 500,
+        iterations: 1,
         easing: "ease"
     });
 
 
 
-
-    // $congratulationsBar.classList.add('disactive');
-    // window.setTimeout(function () {
-    //     $congratulationsBar.classList.remove('active');
-    //     $congratulationsBar.classList.remove('disactive');
-    //     $congratulationsBar.style.display ='none';
-    // }, 450);
+    window.setTimeout(function () {
+        $congratulationsBar.classList.remove('active');
+    }, 480);
 
 
 }
