@@ -10,9 +10,12 @@ let $puzzles;
 let $playAgainBtn;
 let $gameResults;
 let $congratulationsBar;
+let $countSeconds;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
+    fillPuzzles();
+    isInRightPoisition();
 };
 
 const prepareDOMElements = () => {
@@ -25,22 +28,28 @@ const prepareDOMElements = () => {
     $playAgainBtn = document.querySelector('.btn-play-again');
     $gameResults = document.querySelector('.game-results');
     $congratulationsBar = document.querySelector('.congratulations-bar');
-    fillPuzzles();
-    // userWins();
-    isInRightPoisition();
+};
 
-}
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
     $restartBtn.addEventListener('click', restartAll);
-
     movePuzzle();
-    $pausePlayBtn.addEventListener('click', function () {
-        console.log("j");
-    })
     $playAgainBtn.addEventListener('click', playAgain);
+    $pausePlayBtn.addEventListener('click', pauseOrPlay)
 
 };
+
+const pauseOrPlay = () => {
+
+    if ($pausePlayBtn.innerHTML === 'Pause') {
+        pauseGame();
+        $pausePlayBtn.innerHTML = "Play";
+    } else {
+        $countSeconds = setInterval(timer, 1000, Infinity);
+        $pausePlayBtn.innerHTML = "Pause";
+    }
+};
+
 
 const restartAll = () => {
     addChildToReset();
@@ -53,6 +62,11 @@ const restartAll = () => {
     $timeResult.innerHTML = $timeCounter;
     $pausePlayBtn.classList.add('disactive');
     $pausePlayBtn.setAttribute('disabled', 'disabled');
+};
+
+const timer = () => {
+    $timeCounter++;
+    $timeResult.innerHTML = $timeCounter;
 }
 
 const isInRightPoisition = () => {
@@ -69,9 +83,6 @@ const isInRightPoisition = () => {
                 bufor.classList.remove('right-position');
             }
         }
-
-
-
     }
 }
 const playAgain = () => {
@@ -97,13 +108,10 @@ const playAgain = () => {
         easing: "ease"
     });
 
-
-
     window.setTimeout(function () {
         $congratulationsBar.classList.remove('active');
     }, 480);
-
-
+    isInRightPoisition()
 }
 
 const movePuzzle = () => {
@@ -131,12 +139,24 @@ const movePuzzle = () => {
                         $pausePlayBtn.classList.remove('disactive')
                         $pausePlayBtn.removeAttribute('disabled')
                     }
+                    if ($timeCounter === 0) {
+
+                        $timeCounter++;
+                        $timeResult.innerHTML = $timeCounter;
+
+                        $countSeconds = setInterval(timer, 1000, Infinity);
+
+                    }
                     $movesResult.innerHTML = $movesCounter;
                 }
             }
             isFinished();
         })
     }
+}
+
+const pauseGame = () => {
+    clearInterval($countSeconds);
 }
 
 
@@ -178,7 +198,6 @@ function fillPuzzles() {
             $divZero.classList.add('zero-puzzle')
         } else {
             puzzle.querySelector('p').innerHTML = randomArray[index];
-            console.log(randomArray[index]);
         }
         index++;
     }
@@ -228,6 +247,4 @@ const userWins = () => {
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
-
-
 }
