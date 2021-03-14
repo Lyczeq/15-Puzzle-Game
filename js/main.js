@@ -75,7 +75,7 @@ const restartGame = () => {
     $pauseBar.style.display = "none";
     $pausePlayBtn.innerHTML = "Pause";
     stopTimer();
-
+    isInRightPoisition();
     $pausePlayBtn.classList.add('disactive');
     $pausePlayBtn.setAttribute('disabled', 'disabled');
 };
@@ -127,7 +127,7 @@ const playAgain = () => {
     window.setTimeout(function () {
         $congratulationsBar.classList.remove('active');
     }, 480);
-    isInRightPoisition()
+    isInRightPoisition();
 }
 
 const movePuzzle = () => {

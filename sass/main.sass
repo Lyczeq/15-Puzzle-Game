@@ -4,7 +4,8 @@
     box-sizing: border-box
 
 body
-    font-family: 'Arial'
+    font-family: 'Montserrat','Arial', sans-serif
+    background-color: #fdf273
 
 .wrapper
     margin: 0 auto
@@ -12,14 +13,15 @@ body
 
 h1
     margin: 25px 0
-    color: rgb(115, 28, 192)
-    font-size: 35px
+    color: white
     text-align: center
-    // text-shadow: 0  0 15px rgb(84, 31, 130)
+    text-shadow: 2px 2px 5px black
+    font-family: 'Cookie', cursive
+    font-size: 50px
 
 button
     cursor: pointer
-    font-family: 'Arial'
+    font-family: 'Montserrat','Arial', sans-serif
 
 //GAME RESULTS SECTION
 section
@@ -33,7 +35,7 @@ section
         display: flex
         flex-wrap: wrap
         width: 50%
-        background-color: rgb(115, 28, 192)
+        background-color: #5BC8AC
         border-radius: 10px
         color: white
 
@@ -72,10 +74,10 @@ section
     border: none
     border-radius: 10px
     transition: color .3s, background-color .3s
-    background-color: rgb(115, 28, 192)
+    background-color: #5BC8AC
     color: white
     &:hover
-        color: rgb(115, 28, 192)
+        color: #5BC8AC
         background-color: white
  
 
@@ -92,14 +94,14 @@ section
 
 .game-puzzle
     border-radius: 15px
-    background-color:  rgb(111, 107, 104)
+    background-color:  rgb(170, 167, 164)
 
 .puzzle-box
     position: relative
     width: 100%
     height: 100%
     border-radius: 15px
-    background-color: red
+    background-color: #36cca6
     cursor: pointer
     animation: move-puzzle .2s
 
@@ -112,16 +114,18 @@ section
         
 
 .right-position
-    background-color: blue
+    background-color: #F18D9E
+    
 
 .puzzle-number
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%,-50%)
+    font-size: 70px
+    font-family: 'Cookie', cursive
+    color: white
 
-.zero-puzzle
-    background-color: #6F6B68
 
 .pause-bar
     display: none
@@ -240,7 +244,7 @@ section
     font-size: 20px
 
 .fa-envelope, .my-mail
-    color: rgb(115, 28, 192)
+    color: #5BC8AC
     font-size: 100%
 
 .btn-mail
@@ -250,7 +254,7 @@ section
 .contact-item
     font-size: 20px
     transition: transform .3s, color .3s
-    color: rgb(115, 28, 192)
+    color: #5BC8AC
     &:hover
         transform: scale(1.2)
 
