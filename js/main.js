@@ -11,6 +11,7 @@ let $playAgainBtn;
 let $gameResults;
 let $congratulationsBar;
 let $countSeconds;
+let $pauseBar;
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -28,13 +29,14 @@ const prepareDOMElements = () => {
     $playAgainBtn = document.querySelector('.btn-play-again');
     $gameResults = document.querySelector('.game-results');
     $congratulationsBar = document.querySelector('.congratulations-bar');
+    $pauseBar = document.querySelector('.pause-bar')
 };
 
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
-    $restartBtn.addEventListener('click', restartAll);
+    $restartBtn.addEventListener('click', restartGame);
     movePuzzle();
-    $playAgainBtn.addEventListener('click', playAgain);
+    // $playAgainBtn.addEventListener('click', playAgain);
     $pausePlayBtn.addEventListener('click', pauseOrPlay)
 
 };
@@ -42,8 +44,9 @@ const prepareDOMEvents = () => {
 const pauseOrPlay = () => {
 
     if ($pausePlayBtn.innerHTML === 'Pause') {
-        pauseGame();
+        stopTimer();
         $pausePlayBtn.innerHTML = "Play";
+        $pauseBar.style.display="block";
     } else {
         $countSeconds = setInterval(timer, 1000, Infinity);
         $pausePlayBtn.innerHTML = "Pause";
@@ -51,7 +54,7 @@ const pauseOrPlay = () => {
 };
 
 
-const restartAll = () => {
+const restartGame = () => {
     addChildToReset();
     $divZero.classList.remove('zero-puzzle');
 
@@ -60,6 +63,8 @@ const restartAll = () => {
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
+    stopTimer();
+
     $pausePlayBtn.classList.add('disactive');
     $pausePlayBtn.setAttribute('disabled', 'disabled');
 };
@@ -117,6 +122,7 @@ const playAgain = () => {
 const movePuzzle = () => {
     for (puzzle of $puzzles) {
         puzzle.addEventListener('click', function () {
+
             let currentIndex = $puzzles.indexOf(this);
             let zeroIndex = $puzzles.indexOf($divZero);
 
@@ -128,7 +134,7 @@ const movePuzzle = () => {
                     ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
                     ((currentIndex + 4 === zeroIndex)) ||
                     ((currentIndex - 4 === zeroIndex))) {
-
+            console.log("ho");
                     $divZero.appendChild(this.firstChild)
                     $divZero.classList.remove('zero-puzzle');
                     $divZero = this;
@@ -155,7 +161,7 @@ const movePuzzle = () => {
     }
 }
 
-const pauseGame = () => {
+const stopTimer = () => {
     clearInterval($countSeconds);
 }
 

@@ -7,7 +7,7 @@
 
 body {
   background-color: #edb336;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Arial';
 }
 
 .wrapper {
@@ -25,7 +25,7 @@ h1 {
 
 button {
   cursor: pointer;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Arial';
 }
 
 section {
@@ -103,6 +103,88 @@ section .game-results .seconds {
   background-color: white;
 }
 
+.game-container {
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  gap: 2%;
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+}
+
+.game-puzzle {
+  border-radius: 15px;
+  background-color: #6f6b68;
+}
+
+.puzzle-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: red;
+  cursor: pointer;
+}
+
+.right-position {
+  background-color: blue;
+}
+
+.puzzle-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.zero-puzzle {
+  background-color: #6F6B68;
+}
+
+.pause-bar {
+  display: none;
+  position: absolute;
+  height: 105%;
+  width: 105%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  border-radius: 10px;
+}
+
+.pause-bar .play-btn {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+  background: none;
+  border: none;
+  height: 80px;
+  width: 80px;
+  background: none;
+}
+
+.pause-bar .play-btn:focus {
+  outline: none;
+}
+
+.pause-bar .play-btn svg {
+  height: 100%;
+  width: 100%;
+}
+
 .congratulations-bar {
   position: absolute;
   display: none;
@@ -116,8 +198,8 @@ section .game-results .seconds {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  height: 101%;
-  width: 101%;
+  height: 105%;
+  width: 105%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -186,50 +268,6 @@ section .game-results .seconds {
   }
 }
 
-.game-container {
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: (1fr)[4];
-      grid-template-rows: repeat(4, 1fr);
-  gap: 2%;
-  width: 300px;
-  height: 300px;
-  margin: 30px auto;
-}
-
-.game-puzzle {
-  border-radius: 15px;
-  background-color: #6f6b68;
-}
-
-.puzzle-box {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  background-color: red;
-  cursor: pointer;
-}
-
-.right-position {
-  background-color: blue;
-}
-
-.puzzle-number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.zero-puzzle {
-  background-color: #6F6B68;
-}
-
 .btn-pause-play {
   display: block;
   margin: 0 auto;
@@ -273,9 +311,9 @@ section .game-results .seconds {
   font-size: 20px;
 }
 
-.my-mail, i {
+.fa-envelope, .my-mail {
   color: #731cc0;
-  font-size: 16px;
+  font-size: 100%;
 }
 
 .btn-mail {
@@ -284,10 +322,12 @@ section .game-results .seconds {
 }
 
 .contact-item {
+  font-size: 20px;
   -webkit-transition: color .3s, -webkit-transform .3s;
   transition: color .3s, -webkit-transform .3s;
   transition: transform .3s, color .3s;
   transition: transform .3s, color .3s, -webkit-transform .3s;
+  color: #731cc0;
 }
 
 .contact-item:hover {

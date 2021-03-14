@@ -5,8 +5,7 @@
 
 body
     background-color: rgb(237, 179, 54)
-    // font-family: 'Montserrat', sans-serif
-    font-family: 'Luckiest Guy', cursive
+    font-family: 'Arial'
 
 .wrapper
     margin: 0 auto
@@ -21,7 +20,7 @@ h1
 
 button
     cursor: pointer
-    font-family: 'Luckiest Guy', cursive
+    font-family: 'Arial'
 
 //GAME RESULTS SECTION
 section
@@ -82,14 +81,81 @@ section
  
 
 //GAME GRID CONTAINER
+.game-container
+    position: relative
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    grid-template-rows: repeat(4, 1fr)
+    gap: 2%
+    width: 300px
+    height: 300px
+    margin: 30px auto
+
+.game-puzzle
+    border-radius: 15px
+    background-color:  rgb(111, 107, 104)
+
+.puzzle-box
+    position: relative
+    width: 100%
+    height: 100%
+    border-radius: 15px
+    background-color: red
+    cursor: pointer
+
+
+.right-position
+    background-color: blue
+
+.puzzle-number
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+
+.zero-puzzle
+    background-color: #6F6B68
+
+.pause-bar
+    display: none
+    position: absolute
+    height: 105%
+    width: 105%
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    background-color: rgba(0, 0, 0, .5)
+    z-index: 2
+    border-radius: 10px
+
+    .play-btn
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        z-index: 3
+        background: none
+        border: none
+        height: 80px
+        width: 80px
+        // background-color: red
+        background: none
+        &:focus
+            outline: none
+
+        svg
+            height: 100%
+            width: 100%
+
 .congratulations-bar
     position: absolute
     display: none
     align-items: center
     flex-direction: column
     justify-content: space-evenly
-    height: 101%
-    width: 101%
+    height: 105%
+    width: 105%
     top: 50%
     left: 50%
     transform: translate(-50%,-50%)
@@ -130,41 +196,6 @@ section
         opacity: .95
         transform: translate(-50%,-50%) scale(1)
 
-.game-container
-    position: relative
-    display: grid
-    grid-template-columns: repeat(4, 1fr)
-    grid-template-rows: repeat(4, 1fr)
-    gap: 2%
-    width: 300px
-    height: 300px
-    margin: 30px auto
-
-.game-puzzle
-    border-radius: 15px
-    background-color:  rgb(111, 107, 104)
-
-.puzzle-box
-    position: relative
-    width: 100%
-    height: 100%
-    border-radius: 15px
-    background-color: red
-    cursor: pointer
-
-
-.right-position
-    background-color: blue
-
-.puzzle-number
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%,-50%)
-
-.zero-puzzle
-    background-color: #6F6B68
-
 //DESCRIPTION
 .btn-pause-play
     display: block
@@ -199,18 +230,20 @@ section
     align-items: center
     margin: auto
     width: 40%
-    font-size: 20px    
+    font-size: 20px
 
-.my-mail, i
+.fa-envelope, .my-mail
     color: rgb(115, 28, 192)
-    font-size: 16px
+    font-size: 100%
 
 .btn-mail
     background: none
     border: none
 
 .contact-item
+    font-size: 20px
     transition: transform .3s, color .3s
+    color: rgb(115, 28, 192)
     &:hover
         transform: scale(1.2)
 
