@@ -4,7 +4,6 @@
     box-sizing: border-box
 
 body
-    background-color: rgb(237, 179, 54)
     font-family: 'Arial'
 
 .wrapper
@@ -13,10 +12,10 @@ body
 
 h1
     margin: 25px 0
-    color: white
+    color: rgb(115, 28, 192)
     font-size: 35px
     text-align: center
-    text-shadow: 0  0 15px rgb(84, 31, 130)
+    // text-shadow: 0  0 15px rgb(84, 31, 130)
 
 button
     cursor: pointer
@@ -102,7 +101,15 @@ section
     border-radius: 15px
     background-color: red
     cursor: pointer
+    animation: move-puzzle .2s
 
+@keyframes move-puzzle
+    0%
+        transform: scale(.7)
+
+    100%
+        transform: scale(1)
+        
 
 .right-position
     background-color: blue

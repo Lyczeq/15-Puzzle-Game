@@ -1,3 +1,4 @@
+'use strict'
 let $btnMail;
 let $timeCounter = 0;
 let $movesCounter = 0;
@@ -12,6 +13,7 @@ let $gameResults;
 let $congratulationsBar;
 let $countSeconds;
 let $pauseBar;
+let $playBtn
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -29,16 +31,17 @@ const prepareDOMElements = () => {
     $playAgainBtn = document.querySelector('.btn-play-again');
     $gameResults = document.querySelector('.game-results');
     $congratulationsBar = document.querySelector('.congratulations-bar');
-    $pauseBar = document.querySelector('.pause-bar')
+    $pauseBar = document.querySelector('.pause-bar');
+    $playBtn = $pauseBar.querySelector('.play-btn');
 };
 
 const prepareDOMEvents = () => {
     $btnMail.addEventListener('click', copyMail);
     $restartBtn.addEventListener('click', restartGame);
     movePuzzle();
-    // $playAgainBtn.addEventListener('click', playAgain);
+    $playAgainBtn.addEventListener('click', playAgain);
     $pausePlayBtn.addEventListener('click', pauseOrPlay)
-
+    $playBtn.addEventListener('click', playAfterPause);
 };
 
 const pauseOrPlay = () => {
@@ -46,12 +49,18 @@ const pauseOrPlay = () => {
     if ($pausePlayBtn.innerHTML === 'Pause') {
         stopTimer();
         $pausePlayBtn.innerHTML = "Play";
-        $pauseBar.style.display="block";
+        $pauseBar.style.display = "block";
+
     } else {
-        $countSeconds = setInterval(timer, 1000, Infinity);
-        $pausePlayBtn.innerHTML = "Pause";
+        playAfterPause();
     }
 };
+
+const playAfterPause = () => {
+    $countSeconds = setInterval(timer, 1000, Infinity);
+    $pausePlayBtn.innerHTML = "Pause";
+    $pauseBar.style.display = "none";
+}
 
 
 const restartGame = () => {
@@ -63,6 +72,8 @@ const restartGame = () => {
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
+    $pauseBar.style.display = "none";
+    $pausePlayBtn.innerHTML = "Pause";
     stopTimer();
 
     $pausePlayBtn.classList.add('disactive');
@@ -120,7 +131,7 @@ const playAgain = () => {
 }
 
 const movePuzzle = () => {
-    for (puzzle of $puzzles) {
+    $puzzles.forEach(puzzle => {
         puzzle.addEventListener('click', function () {
 
             let currentIndex = $puzzles.indexOf(this);
@@ -134,7 +145,6 @@ const movePuzzle = () => {
                     ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
                     ((currentIndex + 4 === zeroIndex)) ||
                     ((currentIndex - 4 === zeroIndex))) {
-            console.log("ho");
                     $divZero.appendChild(this.firstChild)
                     $divZero.classList.remove('zero-puzzle');
                     $divZero = this;
@@ -158,13 +168,13 @@ const movePuzzle = () => {
             }
             isFinished();
         })
-    }
+    });
+
 }
 
 const stopTimer = () => {
     clearInterval($countSeconds);
 }
-
 
 const showMailInfo = () => {
     const mailInfo = document.querySelector('.mail-info');
@@ -186,7 +196,6 @@ const copyMail = () => {
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
 };
-
 
 function fillPuzzles() {
     const nums = new Set
@@ -235,11 +244,10 @@ function isFinished() {
 
 const userWins = () => {
     $restartBtn.classList.add('disactive');
-    $restartBtn.setAttribute('disabled', 'disabled')
+    $restartBtn.setAttribute('disabled', 'disabled');
+
     $pausePlayBtn.classList.add('disactive')
-    if (!$pausePlayBtn.hasAttribute('disabled')) {
-        $pausePlayBtn.setAttribute('disabled ', 'disabled')
-    }
+    $pausePlayBtn.disabled = true;
 
     $gameResults.classList.add('disactive')
     $congratulationsBar.classList.add('active');
@@ -253,4 +261,5 @@ const userWins = () => {
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
+    stopTimer();
 }

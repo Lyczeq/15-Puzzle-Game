@@ -6,7 +6,6 @@
 }
 
 body {
-  background-color: #edb336;
   font-family: 'Arial';
 }
 
@@ -17,10 +16,9 @@ body {
 
 h1 {
   margin: 25px 0;
-  color: white;
+  color: #731cc0;
   font-size: 35px;
   text-align: center;
-  text-shadow: 0 0 15px #541f82;
 }
 
 button {
@@ -129,6 +127,30 @@ section .game-results .seconds {
   border-radius: 15px;
   background-color: red;
   cursor: pointer;
+  -webkit-animation: move-puzzle .2s;
+          animation: move-puzzle .2s;
+}
+
+@-webkit-keyframes move-puzzle {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes move-puzzle {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 .right-position {
