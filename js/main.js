@@ -150,6 +150,7 @@ const movePuzzle = () => {
                     $divZero = this;
                     $movesCounter++;
                     this.classList.add('zero-puzzle');
+
                     isInRightPoisition();
                     if ($movesCounter !== 0) {
                         $pausePlayBtn.classList.remove('disactive')
@@ -223,10 +224,11 @@ function addChildToReset() {
     puzzleBox.classList.add('puzzle-box');
     const puzzleNumber = document.createElement('p');
     puzzleNumber.classList.add('puzzle-number');
-    puzzleNumber.innerHTML = "1"
+    puzzleNumber.innerHTML = "";
     puzzleBox.appendChild(puzzleNumber);
     $divZero.appendChild(puzzleBox);
 }
+
 document.addEventListener('DOMContentLoaded', main);
 
 function isFinished() {
@@ -263,3 +265,4 @@ const userWins = () => {
     $timeResult.innerHTML = $timeCounter;
     stopTimer();
 }
+

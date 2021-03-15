@@ -56,7 +56,7 @@ section
             
 
         .time-result
-            color: rgb(237, 179, 54)
+            color:  #fdf273
 
         .seconds
             color: white
@@ -90,7 +90,7 @@ section
     gap: 2%
     width: 300px
     height: 300px
-    margin: 30px auto
+    margin: 15px auto
 
 .game-puzzle
     border-radius: 15px
@@ -103,7 +103,7 @@ section
     border-radius: 15px
     background-color: #36cca6
     cursor: pointer
-    animation: move-puzzle .2s
+    animation: move-puzzle .3s ease 
 
 @keyframes move-puzzle
     0%
@@ -135,7 +135,7 @@ section
     top: 50%
     left: 50%
     transform: translate(-50%,-50%)
-    background-color: rgba(0, 0, 0, .5)
+    background-color: #cfcfcfc9
     z-index: 2
     border-radius: 10px
 
@@ -150,8 +150,8 @@ section
         border: none
         height: 80px
         width: 80px
-        // background-color: red
         background: none
+        
         &:focus
             outline: none
 
@@ -171,7 +171,7 @@ section
     left: 50%
     transform: translate(-50%,-50%)
     border-radius: 10px
-    background-color: #d1c1a6
+    background-color: #e4ddd2d0
     z-index: 2
     opacity: .95
     &.active
@@ -179,20 +179,22 @@ section
         animation: congratulations .5s ease 1
 
     .congratulations
-        color: rgb(84, 31, 130)
-        text-shadow: 0 0 20px rgb(237, 179, 54)
-        text-transform: uppercase
-        font-size: 23px
+        font-size: 43px
+        font-family: 'Cookie', cursive
+        font-weight: bold
+        color: #fdf273
+        letter-spacing: 4px
+        text-shadow: 0 0 2px #535353
 
     .final-score
         width: 60%
         text-align: center
         font-weight: bold
-        color: rgb(84, 31, 130)
+        color: #F18D9E
 
         .final-moves, .final-time
-            color: rgb(237, 179, 54)
-            text-shadow: 0px 0px 3px black
+            color: #fdf273
+            text-shadow: 0px 0px 1px #535353
 
     .btn-play-again
         padding: 15px 30px
@@ -213,7 +215,6 @@ section
     margin: 0 auto
     padding: 15px 30px
     font-size: 20px
-    font-family: 'Luckiest Guy', cursive
 
 .btn-restart, .btn-pause-play, .game-results
     &.disactive
@@ -231,7 +232,7 @@ section
 
     .order
         font-size: 18px
-        color: white
+        color: #F18D9E
 
 //CONTACT
 .contact
