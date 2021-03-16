@@ -11,6 +11,7 @@ body
     margin: 0 auto
     width: 300px
 
+
 h1
     margin: 25px 0
     color: white
@@ -148,14 +149,14 @@ section
         z-index: 3
         background: none
         border: none
-        height: 80px
-        width: 80px
+        height: 70px
+        width: 70px
         background: none
         
         &:focus
-            outline: none
+            // outline: none
 
-        svg
+        .play-svg
             height: 100%
             width: 100%
 
@@ -220,7 +221,7 @@ section
     &.disactive
         cursor: not-allowed
         opacity: 0.5
-        background-color: #333
+        background-color: #AAA7A4
         color: white
 
 .how-to-play
@@ -228,7 +229,7 @@ section
     margin: 20px auto 0 auto
     text-align: center
     font-weight: 450
-    color: #656266
+    color: rgb(170, 167, 164)
 
     .order
         font-size: 18px
@@ -240,8 +241,8 @@ section
     display: flex
     justify-content: space-around
     align-items: center
-    margin: auto
-    width: 40%
+    margin: 10px auto 0
+    width: 60%
     font-size: 20px
 
 .fa-envelope, .my-mail
@@ -252,10 +253,9 @@ section
     background: none
     border: none
 
+
 .contact-item
-    font-size: 20px
     transition: transform .3s, color .3s
-    color: #5BC8AC
     &:hover
         transform: scale(1.2)
 
@@ -267,8 +267,9 @@ section
     border-radius: 10px
     padding: 10px 
     background-color: #7b787ce8
-    font-size: 10px
+    font-size: 15px
     color: white
+    text-align: center
     &.active
         display: block
         animation: showMailInfo 4s ease 1
@@ -307,9 +308,6 @@ section
         width: 350px
         height: 350px
 
-    .mail-info
-        font-size: 14px
-
     .congratulations-bar
         .btn-play-again
             font-size: 22px
@@ -320,3 +318,7 @@ section
     
     .mail-info
         width: 300px
+
+.icon
+    height: 22px
+    width: 22px

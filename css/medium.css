@@ -2,29 +2,15 @@
   width: 400px;
 }
 
-.game-container {
-  width: 400px;
-  height: 400px;
-  margin: 35px auto;
-}
-
 h1 {
   margin: 20px 0;
   font-size: 60px;
 }
 
-.how-to-play {
-  width: 100%;
-}
-
-.mail-info {
-  width: 290px;
-  font-size: 15px;
-}
-
-.how-to-play {
-  margin-top: 60px;
-  font-size: 20px;
+.game-container {
+  width: 400px;
+  height: 400px;
+  margin: 35px auto;
 }
 
 .congratulations-bar .congratulations {
@@ -36,11 +22,29 @@ h1 {
 }
 
 .how-to-play {
-  font-size: 22px;
+  width: 90%;
+  margin-top: 60px;
+  font-size: 20px;
 }
 
 .how-to-play .order {
   font-size: 23px;
   color: #F18D9E;
+}
+
+.contact {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 35px auto 0;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+.mail-info {
+  width: 290px;
+  font-size: 15px;
 }
 /*# sourceMappingURL=medium.css.map */

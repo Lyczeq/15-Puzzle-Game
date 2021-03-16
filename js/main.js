@@ -76,9 +76,29 @@ const restartGame = () => {
     $pausePlayBtn.innerHTML = "Pause";
     stopTimer();
     isInRightPoisition();
+    $puzzles.forEach(puzzle => animatePuzzle(puzzle));
     $pausePlayBtn.classList.add('disactive');
     $pausePlayBtn.setAttribute('disabled', 'disabled');
+
 };
+
+const animatePuzzle = (puzzle) => {
+    if (puzzle.querySelector('.puzzle-box')) {
+        puzzle.querySelector('.puzzle-box').animate([{
+                transform: "scale(.7)"
+            },
+            {
+                transform: "scale(1)"
+            }
+        ], {
+            duration: 300,
+            iterations: 1,
+            easing: "ease"
+        });
+    }
+
+
+}
 
 const timer = () => {
     $timeCounter++;
@@ -265,4 +285,3 @@ const userWins = () => {
     $timeResult.innerHTML = $timeCounter;
     stopTimer();
 }
-

@@ -24,7 +24,7 @@
                 <p class="move-result flex-child">0</p>
                 <p class="time-result flex-child"><span class="seconds">0</span> s</span></p>
             </div>
-            <button class="btn-restart game-btn">restart game</button>
+            <button class="btn-restart game-btn" >restart game</button>
         </section>
         <div class="game-container">
             <div class="congratulations-bar">
@@ -32,12 +32,12 @@
                 <p class="final-score">You needed <span class="final-moves"></span> moves and <span class="final-time"></span> s to win!</p>
                 <button class="game-btn btn-play-again">Play Again</button>
             </div>
-            <div class="pause-bar"><button class="play-btn"><svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><path d='M238.23 342.43l89.09-74.13a16 16 0 000-24.6l-89.09-74.13A16 16 0 00212 181.86v148.28a16 16 0 0026.23 12.29z' fill="white"/><path d='M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z' fill='none' stroke='white' stroke-miterlimit='10' stroke-width='32'/></svg></button></div>
+            <div class="pause-bar"><button class="play-btn"><img src='svg/play-button.svg' alt=""></button></div>
             <div class="congratulations-bar">
                 <h3 class="congratulations">Congratulations!</h3>
                 <p class="final-score">You needed <span class="final-moves"></span> moves and <span
                         class="final-time"></span> s to win!</p>
-                <button class="game-btn btn-play-again">Play Again</button>
+                <button class="game-btn btn-play-again" >Play Again</button>
             </div>
             <div class="game-puzzle"><div class="puzzle-box"><p class="puzzle-number"></p></div></div>
             <div class="game-puzzle"><div class="puzzle-box"><p class="puzzle-number"></p></div></div>
@@ -58,17 +58,15 @@
         </div>
         <button class="btn-pause-play game-btn disactive" disabled>Pause</button>
         <p class="how-to-play">Move squares in grid to order them from <strong class="order">1 to 15 leaving last square empty</strong></p>
-        <footer>
-            <section class="contact">
-                <a href="https://github.com/Lyczeq" target="_blank" class="contact-item"><i class="fab fa-github"></i></a>
-                <button class="btn-mail contact-item"><i class="fas fa-envelope"></i>
+        <footer class="contact">
+                <a href="https://github.com/Lyczeq" target="_blank" class="contact-item"><img class="icon" src="svg/github.svg" alt="Github button"></i></a>
+                <button class="btn-mail contact-item icon"><img src="svg/mail.svg" alt="Mail button">
                 </button>
                 <div class="mail-info">E-mail <strong class="my-mail">jakub.lyczko1@gmail.com</strong> was coppied to Your clipboard!</div>
-                <a href="#" target="_blank" class="contact-item"><i class="fab fa-facebook-square"></i></a>
-            </section>
+                <a href="#" target="_blank" class="contact-item"><img class="icon" src="svg/linkedin.svg" alt="Linkedin button"></a>
         </footer>
-    </div>
-    <script src="js/main.js"></script>
+    </div>       
+ <script src="js/main.js"></script>
 </body>
 
 </html>

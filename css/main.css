@@ -195,16 +195,12 @@ section .game-results .seconds {
   z-index: 3;
   background: none;
   border: none;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   background: none;
 }
 
-.pause-bar .play-btn:focus {
-  outline: none;
-}
-
-.pause-bar .play-btn svg {
+.pause-bar .play-btn .play-svg {
   height: 100%;
   width: 100%;
 }
@@ -304,7 +300,7 @@ section .game-results .seconds {
 .btn-restart.disactive, .btn-pause-play.disactive, .game-results.disactive {
   cursor: not-allowed;
   opacity: 0.5;
-  background-color: #333;
+  background-color: #AAA7A4;
   color: white;
 }
 
@@ -313,7 +309,7 @@ section .game-results .seconds {
   margin: 20px auto 0 auto;
   text-align: center;
   font-weight: 450;
-  color: #656266;
+  color: #aaa7a4;
 }
 
 .how-to-play .order {
@@ -331,8 +327,8 @@ section .game-results .seconds {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: auto;
-  width: 40%;
+  margin: 10px auto 0;
+  width: 60%;
   font-size: 20px;
 }
 
@@ -347,12 +343,10 @@ section .game-results .seconds {
 }
 
 .contact-item {
-  font-size: 20px;
   -webkit-transition: color .3s, -webkit-transform .3s;
   transition: color .3s, -webkit-transform .3s;
   transition: transform .3s, color .3s;
   transition: transform .3s, color .3s, -webkit-transform .3s;
-  color: #5BC8AC;
 }
 
 .contact-item:hover {
@@ -368,8 +362,9 @@ section .game-results .seconds {
   border-radius: 10px;
   padding: 10px;
   background-color: #7b787ce8;
-  font-size: 10px;
+  font-size: 15px;
   color: white;
+  text-align: center;
 }
 
 .mail-info.active {
@@ -441,9 +436,6 @@ section .game-results .seconds {
     width: 350px;
     height: 350px;
   }
-  .mail-info {
-    font-size: 14px;
-  }
   .congratulations-bar .btn-play-again {
     font-size: 22px;
   }
@@ -456,5 +448,10 @@ section .game-results .seconds {
   .mail-info {
     width: 300px;
   }
+}
+
+.icon {
+  height: 22px;
+  width: 22px;
 }
 /*# sourceMappingURL=main.css.map */
