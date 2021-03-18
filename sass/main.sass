@@ -4,21 +4,20 @@
     box-sizing: border-box
 
 body
-    font-family: 'Montserrat','Arial', sans-serif
     background-color: #fdf273
+    font-family: 'Montserrat','Arial', sans-serif
 
 .wrapper
     margin: 0 auto
     width: 300px
 
-
 h1
     margin: 25px 0
-    color: white
     text-align: center
     text-shadow: 2px 2px 5px black
     font-family: 'Cookie', cursive
     font-size: 50px
+    color: white
 
 button
     cursor: pointer
@@ -32,9 +31,9 @@ section
     height: 50px
 
     .game-results
-        height: 100%
         display: flex
         flex-wrap: wrap
+        height: 100%
         width: 50%
         background-color: #5BC8AC
         border-radius: 10px
@@ -50,12 +49,10 @@ section
             text-transform: uppercase
             font-weight: 550
             
-
         .move-result, .time-result
             padding: 3px 8px 6px 0
             font-family: 'Montserrat', sans-serif
             
-
         .time-result
             color:  #fdf273
 
@@ -64,12 +61,12 @@ section
             font-weight: normal
 
 .btn-restart
+    height: 100%     
     width: 30%
     padding: 5px 10px
-    height: 100%     
-    font-size: 13px
     font-weight: bold
     text-transform: uppercase
+    font-size: 13px
 
 .game-btn
     border: none
@@ -113,11 +110,9 @@ section
     100%
         transform: scale(1)
         
-
 .right-position
     background-color: #F18D9E
     
-
 .puzzle-number
     position: absolute
     top: 50%
@@ -129,32 +124,28 @@ section
 
 
 .pause-bar
-    display: none
     position: absolute
-    height: 105%
-    width: 105%
     top: 50%
     left: 50%
+    display: none
+    height: 105%
+    width: 105%
     transform: translate(-50%,-50%)
+    border-radius: 10px
     background-color: #cfcfcfc9
     z-index: 2
-    border-radius: 10px
 
     .play-btn
-        display: block
         position: absolute
         top: 50%
         left: 50%
+        display: block
+        height: 70px
+        width: 70px
         transform: translate(-50%,-50%)
         z-index: 3
         background: none
         border: none
-        height: 70px
-        width: 70px
-        background: none
-        
-        &:focus
-            // outline: none
 
         .play-svg
             height: 100%
@@ -162,14 +153,14 @@ section
 
 .congratulations-bar
     position: absolute
+    top: 50%
+    left: 50%
     display: none
     align-items: center
     flex-direction: column
     justify-content: space-evenly
     height: 105%
     width: 105%
-    top: 50%
-    left: 50%
     transform: translate(-50%,-50%)
     border-radius: 10px
     background-color: #e4ddd2d0
@@ -180,22 +171,22 @@ section
         animation: congratulations .5s ease 1
 
     .congratulations
-        font-size: 43px
-        font-family: 'Cookie', cursive
         font-weight: bold
-        color: #fdf273
+        font-family: 'Cookie', cursive
+        font-size: 43px
         letter-spacing: 4px
         text-shadow: 0 0 2px #535353
+        color: #fdf273
 
     .final-score
         width: 60%
         text-align: center
         font-weight: bold
         color: #F18D9E
+        text-shadow: 0px 0px 1px #535353
 
         .final-moves, .final-time
             color: #fdf273
-            text-shadow: 0px 0px 1px #535353
 
     .btn-play-again
         padding: 15px 30px
@@ -227,8 +218,8 @@ section
 .how-to-play
     width: 90%
     margin: 20px auto 0 auto
-    text-align: center
     font-weight: 450
+    text-align: center
     color: rgb(170, 167, 164)
 
     .order
@@ -245,7 +236,7 @@ section
     width: 60%
     font-size: 20px
 
-.fa-envelope, .my-mail
+.my-mail
     color: #5BC8AC
     font-size: 100%
 
@@ -253,28 +244,30 @@ section
     background: none
     border: none
 
-
 .contact-item
     transition: transform .3s, color .3s
     &:hover
         transform: scale(1.2)
 
+.icon
+    height: 22px
+    width: 22px
+
 .mail-info
-    display: none
     position: absolute
     top: -50px
+    display: none
     width: 90vw
-    border-radius: 10px
     padding: 10px 
+    border-radius: 10px
     background-color: #7b787ce8
+    text-align: center
     font-size: 15px
     color: white
-    text-align: center
     &.active
         display: block
         animation: showMailInfo 4s ease 1
         
-
 @keyframes showMailInfo
     0%
         opacity: 0
@@ -319,6 +312,3 @@ section
     .mail-info
         width: 300px
 
-.icon
-    height: 22px
-    width: 22px

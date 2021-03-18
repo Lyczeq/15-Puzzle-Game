@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: 'Montserrat','Arial', sans-serif;
   background-color: #fdf273;
+  font-family: 'Montserrat','Arial', sans-serif;
 }
 
 .wrapper {
@@ -17,11 +17,11 @@ body {
 
 h1 {
   margin: 25px 0;
-  color: white;
   text-align: center;
   text-shadow: 2px 2px 5px black;
   font-family: 'Cookie', cursive;
   font-size: 50px;
+  color: white;
 }
 
 button {
@@ -43,12 +43,12 @@ section {
 }
 
 section .game-results {
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  height: 100%;
   width: 50%;
   background-color: #5BC8AC;
   border-radius: 10px;
@@ -82,12 +82,12 @@ section .game-results .seconds {
 }
 
 .btn-restart {
+  height: 100%;
   width: 30%;
   padding: 5px 10px;
-  height: 100%;
-  font-size: 13px;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 13px;
 }
 
 .game-btn {
@@ -172,32 +172,31 @@ section .game-results .seconds {
 }
 
 .pause-bar {
-  display: none;
   position: absolute;
-  height: 105%;
-  width: 105%;
   top: 50%;
   left: 50%;
+  display: none;
+  height: 105%;
+  width: 105%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  border-radius: 10px;
   background-color: #cfcfcfc9;
   z-index: 2;
-  border-radius: 10px;
 }
 
 .pause-bar .play-btn {
-  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
+  display: block;
+  height: 70px;
+  width: 70px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 3;
   background: none;
   border: none;
-  height: 70px;
-  width: 70px;
-  background: none;
 }
 
 .pause-bar .play-btn .play-svg {
@@ -207,6 +206,8 @@ section .game-results .seconds {
 
 .congratulations-bar {
   position: absolute;
+  top: 50%;
+  left: 50%;
   display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -220,8 +221,6 @@ section .game-results .seconds {
           justify-content: space-evenly;
   height: 105%;
   width: 105%;
-  top: 50%;
-  left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border-radius: 10px;
@@ -239,12 +238,12 @@ section .game-results .seconds {
 }
 
 .congratulations-bar .congratulations {
-  font-size: 43px;
-  font-family: 'Cookie', cursive;
   font-weight: bold;
-  color: #fdf273;
+  font-family: 'Cookie', cursive;
+  font-size: 43px;
   letter-spacing: 4px;
   text-shadow: 0 0 2px #535353;
+  color: #fdf273;
 }
 
 .congratulations-bar .final-score {
@@ -252,11 +251,11 @@ section .game-results .seconds {
   text-align: center;
   font-weight: bold;
   color: #F18D9E;
+  text-shadow: 0px 0px 1px #535353;
 }
 
 .congratulations-bar .final-score .final-moves, .congratulations-bar .final-score .final-time {
   color: #fdf273;
-  text-shadow: 0px 0px 1px #535353;
 }
 
 .congratulations-bar .btn-play-again {
@@ -307,8 +306,8 @@ section .game-results .seconds {
 .how-to-play {
   width: 90%;
   margin: 20px auto 0 auto;
-  text-align: center;
   font-weight: 450;
+  text-align: center;
   color: #aaa7a4;
 }
 
@@ -332,7 +331,7 @@ section .game-results .seconds {
   font-size: 20px;
 }
 
-.fa-envelope, .my-mail {
+.my-mail {
   color: #5BC8AC;
   font-size: 100%;
 }
@@ -354,17 +353,22 @@ section .game-results .seconds {
           transform: scale(1.2);
 }
 
+.icon {
+  height: 22px;
+  width: 22px;
+}
+
 .mail-info {
-  display: none;
   position: absolute;
   top: -50px;
+  display: none;
   width: 90vw;
-  border-radius: 10px;
   padding: 10px;
+  border-radius: 10px;
   background-color: #7b787ce8;
+  text-align: center;
   font-size: 15px;
   color: white;
-  text-align: center;
 }
 
 .mail-info.active {
@@ -448,10 +452,5 @@ section .game-results .seconds {
   .mail-info {
     width: 300px;
   }
-}
-
-.icon {
-  height: 22px;
-  width: 22px;
 }
 /*# sourceMappingURL=main.css.map */

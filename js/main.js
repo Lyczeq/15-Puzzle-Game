@@ -14,6 +14,7 @@ let $congratulationsBar;
 let $countSeconds;
 let $pauseBar;
 let $playBtn
+
 const main = () => {
     prepareDOMElements();
     prepareDOMEvents();
@@ -36,12 +37,124 @@ const prepareDOMElements = () => {
 };
 
 const prepareDOMEvents = () => {
-    $btnMail.addEventListener('click', copyMail);
-    $restartBtn.addEventListener('click', restartGame);
     movePuzzle();
-    $playAgainBtn.addEventListener('click', playAgain);
+    $restartBtn.addEventListener('click', restartGame);
     $pausePlayBtn.addEventListener('click', pauseOrPlay)
     $playBtn.addEventListener('click', playAfterPause);
+    $btnMail.addEventListener('click', copyMail);
+    $playAgainBtn.addEventListener('click', playAgain);
+};
+
+const fillPuzzles = () => {
+    const nums = new Set
+    while (nums.size !== 16) {
+        nums.add(Math.floor(Math.random() * 16));
+    }
+    const randomArray = [...nums];
+
+    let index = 0;
+    for (let puzzle of $puzzles) {
+        if (randomArray[index] === 0) {
+            let deletedChild = puzzle.querySelector('div')
+            $divZero = puzzle;
+            $divZero.removeChild(deletedChild)
+            $divZero.classList.add('zero-puzzle')
+        } else {
+            puzzle.querySelector('p').innerHTML = randomArray[index];
+        }
+        index++;
+    }
+};
+
+const isInRightPoisition = () => {
+    for (let i = 0; i < $puzzles.length; i++) {
+
+        const bufor = $puzzles[i].querySelector('.puzzle-box');
+
+        if (bufor !== null) {
+            const puzzNumber = bufor.querySelector('.puzzle-number');
+
+            puzzNumber.innerHTML === `${i+1}` ? bufor.classList.add('right-position') : bufor.classList.remove('right-position');
+        }
+    }
+};
+
+const movePuzzle = () => {
+    $puzzles.forEach(puzzle => {
+        puzzle.addEventListener('click', function () {
+
+            let currentIndex = $puzzles.indexOf(this);
+            let zeroIndex = $puzzles.indexOf($divZero);
+
+            if (currentIndex !== zeroIndex) {
+                const wrongIndexesPlusOne = [3, 7, 11]
+                const wrongIndexesMinusOne = [4, 8, 12]
+
+                if (((currentIndex - 1 === zeroIndex) && !wrongIndexesMinusOne.includes(currentIndex)) || // comparison with next
+                    ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || // comparison with previous
+                    ((currentIndex + 4 === zeroIndex)) ||
+                    ((currentIndex - 4 === zeroIndex))) {
+                    $divZero.appendChild(this.firstChild)
+                    $divZero.classList.remove('zero-puzzle');
+                    $divZero = this;
+                    $movesCounter++;
+                    this.classList.add('zero-puzzle');
+
+                    isInRightPoisition();
+
+                    if ($movesCounter !== 0) {
+                        $pausePlayBtn.classList.remove('disactive')
+                        $pausePlayBtn.removeAttribute('disabled')
+                    }
+                    if ($timeCounter === 0) {
+
+                        $timeCounter++;
+                        $timeResult.innerHTML = $timeCounter;
+
+                        $countSeconds = setInterval(timer, 1000, Infinity);
+
+                    }
+                    $movesResult.innerHTML = $movesCounter;
+                }
+            }
+            isFinished();
+        })
+    });
+};
+
+const isFinished = () => {
+    let counter = 0;
+    for (let i = 0; i < 15; i++) {
+        if ($puzzles[i].querySelector('p') !== null && $puzzles[i].querySelector('p').innerText == i + 1) {
+            counter++;
+        }
+    }
+
+    if (counter === 15) {
+        userWins();
+    }
+};
+
+const userWins = () => {
+    $restartBtn.classList.add('disactive');
+    $restartBtn.setAttribute('disabled', 'disabled');
+
+    $pausePlayBtn.classList.add('disactive')
+    $pausePlayBtn.disabled = true;
+
+    $gameResults.classList.add('disactive')
+    $congratulationsBar.classList.add('active');
+
+    const finalMoves = $congratulationsBar.querySelector('.final-moves');
+    finalMoves.innerHTML = $movesCounter;
+    const finalTime = $congratulationsBar.querySelector('.final-time');
+    finalTime.innerHTML = $timeCounter;
+
+    $movesCounter = 0;
+    $movesResult.innerHTML = $movesCounter;
+    $timeCounter = 0;
+    $timeResult.innerHTML = $timeCounter;
+    stopTimer();
 };
 
 const pauseOrPlay = () => {
@@ -60,29 +173,49 @@ const playAfterPause = () => {
     $countSeconds = setInterval(timer, 1000, Infinity);
     $pausePlayBtn.innerHTML = "Pause";
     $pauseBar.style.display = "none";
-}
+};
 
+const timer = () => {
+    $timeCounter++;
+    $timeResult.innerHTML = $timeCounter;
+};
+
+const stopTimer = () => {
+    clearInterval($countSeconds);
+};
 
 const restartGame = () => {
-    addChildToReset();
+    addChildToRestart();
     $divZero.classList.remove('zero-puzzle');
 
     fillPuzzles();
+
     $movesCounter = 0;
     $movesResult.innerHTML = $movesCounter;
     $timeCounter = 0;
     $timeResult.innerHTML = $timeCounter;
+
     $pauseBar.style.display = "none";
     $pausePlayBtn.innerHTML = "Pause";
-    stopTimer();
-    isInRightPoisition();
-    $puzzles.forEach(puzzle => animatePuzzle(puzzle));
     $pausePlayBtn.classList.add('disactive');
     $pausePlayBtn.setAttribute('disabled', 'disabled');
+    stopTimer();
 
+    isInRightPoisition();
+    $puzzles.forEach(puzzle => animatePuzzle(puzzle));
 };
 
-const animatePuzzle = (puzzle) => {
+const addChildToRestart = () => {
+    const puzzleBox = document.createElement('div');
+    puzzleBox.classList.add('puzzle-box');
+    const puzzleNumber = document.createElement('p');
+    puzzleNumber.classList.add('puzzle-number');
+    puzzleNumber.innerHTML = "";
+    puzzleBox.appendChild(puzzleNumber);
+    $divZero.appendChild(puzzleBox);
+};
+
+const animatePuzzle = puzzle => {
     if (puzzle.querySelector('.puzzle-box')) {
         puzzle.querySelector('.puzzle-box').animate([{
                 transform: "scale(.7)"
@@ -96,36 +229,14 @@ const animatePuzzle = (puzzle) => {
             easing: "ease"
         });
     }
+};
 
-
-}
-
-const timer = () => {
-    $timeCounter++;
-    $timeResult.innerHTML = $timeCounter;
-}
-
-const isInRightPoisition = () => {
-    for (let i = 0; i < $puzzles.length; i++) {
-
-        const bufor = $puzzles[i].querySelector('.puzzle-box');
-
-        if (bufor !== null) {
-            const puzzNumber = bufor.querySelector('.puzzle-number');
-
-            if (puzzNumber.innerHTML === `${i+1}`) {
-                bufor.classList.add('right-position')
-            } else {
-                bufor.classList.remove('right-position');
-            }
-        }
-    }
-}
 const playAgain = () => {
-    addChildToReset();
+    addChildToRestart();
     $divZero.classList.remove('zero-puzzle');
 
     fillPuzzles();
+
     $restartBtn.classList.remove('disactive')
     $gameResults.classList.remove('disactive')
     $restartBtn.removeAttribute('disabled');
@@ -148,54 +259,7 @@ const playAgain = () => {
         $congratulationsBar.classList.remove('active');
     }, 480);
     isInRightPoisition();
-}
-
-const movePuzzle = () => {
-    $puzzles.forEach(puzzle => {
-        puzzle.addEventListener('click', function () {
-
-            let currentIndex = $puzzles.indexOf(this);
-            let zeroIndex = $puzzles.indexOf($divZero);
-
-            if (currentIndex !== zeroIndex) {
-                const wrongIndexesPlusOne = [3, 7, 11]
-                const wrongIndexesMinusOne = [4, 8, 12]
-
-                if (((currentIndex - 1 === zeroIndex) && !wrongIndexesMinusOne.includes(currentIndex)) || // z poprzednim
-                    ((currentIndex + 1 === zeroIndex) && !wrongIndexesPlusOne.includes(currentIndex)) || //z następnym
-                    ((currentIndex + 4 === zeroIndex)) ||
-                    ((currentIndex - 4 === zeroIndex))) {
-                    $divZero.appendChild(this.firstChild)
-                    $divZero.classList.remove('zero-puzzle');
-                    $divZero = this;
-                    $movesCounter++;
-                    this.classList.add('zero-puzzle');
-
-                    isInRightPoisition();
-                    if ($movesCounter !== 0) {
-                        $pausePlayBtn.classList.remove('disactive')
-                        $pausePlayBtn.removeAttribute('disabled')
-                    }
-                    if ($timeCounter === 0) {
-
-                        $timeCounter++;
-                        $timeResult.innerHTML = $timeCounter;
-
-                        $countSeconds = setInterval(timer, 1000, Infinity);
-
-                    }
-                    $movesResult.innerHTML = $movesCounter;
-                }
-            }
-            isFinished();
-        })
-    });
-
-}
-
-const stopTimer = () => {
-    clearInterval($countSeconds);
-}
+};
 
 const showMailInfo = () => {
     const mailInfo = document.querySelector('.mail-info');
@@ -218,70 +282,4 @@ const copyMail = () => {
     window.getSelection().removeAllRanges();
 };
 
-function fillPuzzles() {
-    const nums = new Set
-    while (nums.size !== 16) {
-        nums.add(Math.floor(Math.random() * 16));
-    }
-    const randomArray = [...nums];
-
-    let index = 0;
-    for (let puzzle of $puzzles) {
-        if (randomArray[index] === 0) {
-            let deletedChild = puzzle.querySelector('div')
-            $divZero = puzzle;
-            $divZero.removeChild(deletedChild)
-            $divZero.classList.add('zero-puzzle')
-        } else {
-            puzzle.querySelector('p').innerHTML = randomArray[index];
-        }
-        index++;
-    }
-}
-
-function addChildToReset() {
-    const puzzleBox = document.createElement('div');
-    puzzleBox.classList.add('puzzle-box');
-    const puzzleNumber = document.createElement('p');
-    puzzleNumber.classList.add('puzzle-number');
-    puzzleNumber.innerHTML = "";
-    puzzleBox.appendChild(puzzleNumber);
-    $divZero.appendChild(puzzleBox);
-}
-
 document.addEventListener('DOMContentLoaded', main);
-
-function isFinished() {
-    let counter = 0;
-    for (let i = 0; i < 15; i++) {
-        if ($puzzles[i].querySelector('p') !== null && $puzzles[i].querySelector('p').innerText == i + 1) {
-            counter++;
-        }
-    }
-
-    if (counter === 15) {
-        userWins();
-    }
-}
-
-const userWins = () => {
-    $restartBtn.classList.add('disactive');
-    $restartBtn.setAttribute('disabled', 'disabled');
-
-    $pausePlayBtn.classList.add('disactive')
-    $pausePlayBtn.disabled = true;
-
-    $gameResults.classList.add('disactive')
-    $congratulationsBar.classList.add('active');
-
-    const finalMoves = $congratulationsBar.querySelector('.final-moves');
-    finalMoves.innerHTML = $movesCounter;
-    const finalTime = $congratulationsBar.querySelector('.final-time');
-    finalTime.innerHTML = $timeCounter;
-
-    $movesCounter = 0;
-    $movesResult.innerHTML = $movesCounter;
-    $timeCounter = 0;
-    $timeResult.innerHTML = $timeCounter;
-    stopTimer();
-}
